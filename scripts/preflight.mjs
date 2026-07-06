@@ -14,6 +14,7 @@ const requiredFiles = [
   "downloads/title-factory-starter-pack.csv",
   "downloads/title-factory-starter-pack.md",
   "downloads/ai-tools-paid-template-pack.md",
+  "data/industry-packs.mjs",
   "data/events.csv",
   "data/waitlist.csv",
   "DEPLOY.md",
@@ -58,9 +59,13 @@ const tools = (await readdir("tools")).filter((file) => file.endsWith(".html"));
 if (tools.length === 125) pass("SEO page count", "125 pages");
 else fail("SEO page count", `${tools.length} pages`);
 
+const packs = (await readdir("packs")).filter((file) => file.endsWith(".html"));
+if (packs.length === 25) pass("industry pack page count", "25 pages");
+else fail("industry pack page count", `${packs.length} pages`);
+
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 130) pass("sitemap entry count", "130 entries");
+if (sitemapEntries === 156) pass("sitemap entry count", "156 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
@@ -94,9 +99,21 @@ for (const needle of ["公开模板库", "可复制模板样例", "CollectionPag
 }
 
 const industryPacks = await readFile("industry-packs.html", "utf8");
-for (const needle of ["25 个行业模板包入口", "AI 工具内容模板包", "知识产品销售页模板包", "CollectionPage"]) {
+for (const needle of ["25 个行业模板包入口", "packs/ai-tools-template-pack.html", "AI 工具内容模板包", "知识产品销售页模板包", "CollectionPage"]) {
   if (industryPacks.includes(needle)) pass(`industry packs page contains ${needle}`);
   else fail(`industry packs page contains ${needle}`, "missing");
+}
+
+const aiToolsPack = await readFile("packs/ai-tools-template-pack.html", "utf8");
+for (const needle of ["AI 工具内容模板包", "Product", "¥99 完整包承接", "paid-template-pack.html"]) {
+  if (aiToolsPack.includes(needle)) pass(`AI tools pack page contains ${needle}`);
+  else fail(`AI tools pack page contains ${needle}`, "missing");
+}
+
+const knowledgePack = await readFile("packs/knowledge-product-sales-page-template-pack.html", "utf8");
+for (const needle of ["知识产品销售页模板包", "下载样品", "查看完整包"]) {
+  if (knowledgePack.includes(needle)) pass(`knowledge product pack page contains ${needle}`);
+  else fail(`knowledge product pack page contains ${needle}`, "missing");
 }
 
 const events = await readFile("data/events.csv", "utf8");
