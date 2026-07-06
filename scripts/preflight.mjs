@@ -86,7 +86,7 @@ for (const needle of ["titleFactoryAiToolsVoice", "/api/generate", "ai-tools-wor
 }
 
 const paidPack = await readFile("paid-template-pack.html", "utf8");
-for (const needle of ["适合和不适合", "常见问题", "application/ld+json", "PreOrder"]) {
+for (const needle of ["适合和不适合", "交付预览", "购买决策清单", "title-factory-paid-pack-preview.png", "常见问题", "application/ld+json", "PreOrder"]) {
   if (paidPack.includes(needle)) pass(`paid pack page contains ${needle}`);
   else fail(`paid pack page contains ${needle}`, "missing");
 }
