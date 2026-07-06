@@ -1,0 +1,6 @@
+.DS_Store
+.env
+node_modules
+npm-debug.log*
+title-factory-v1.zip
+*.log

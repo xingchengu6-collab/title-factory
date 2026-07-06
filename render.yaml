@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: title-factory
+    env: node
+    plan: free
+    buildCommand: node scripts/generate-seo-pages.mjs
+    startCommand: node server.mjs
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4173
+      - key: SITE_URL
+        sync: false
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: gpt-4o-mini
+      - key: AI_API_URL
+        value: https://api.openai.com/v1/chat/completions
+      - key: TEMPLATE_PACK_URL
+        sync: false
+      - key: PRO_CHECKOUT_URL
+        sync: false

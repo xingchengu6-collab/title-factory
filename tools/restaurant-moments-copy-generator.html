@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>餐饮探店朋友圈文案生成器 - 标题工厂</title>
+    <meta name="description" content="餐饮探店朋友圈文案生成器，适合餐饮店主、探店博主和本地生活运营生成标题、开头、文案结构和 AI 提示词。无需登录，打开即可使用。" />
+    <link rel="canonical" href="https://title-factory.example.com/tools/restaurant-moments-copy-generator.html" />
+    <script type="application/ld+json">[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "餐饮探店朋友圈文案生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "餐饮探店朋友圈文案生成器，适合餐饮店主、探店博主和本地生活运营生成标题、开头、文案结构和 AI 提示词。无需登录，打开即可使用。",
+    "url": "https://title-factory.example.com/tools/restaurant-moments-copy-generator.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "餐饮探店朋友圈文案生成器适合谁用？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合餐饮店主、探店博主和本地生活运营，尤其适合已经有内容方向，但卡在标题、开头、卖点表达和 AI 提问方式的人。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "生成结果可以直接发布吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以作为第一版草稿使用，但建议结合真实产品、真实案例和平台规则再做微调，避免标题夸张或承诺过度。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个工具和普通提示词有什么区别？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "普通提示词需要你自己组织场景信息，这个页面会预先填好行业、目标用户和常见痛点，再把用户带到生成器里快速生成。"
+        }
+      }
+    ]
+  }
+]</script>
+    <style>
+      :root {
+        --ink: #171717;
+        --muted: #626262;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --mint: #dff4ea;
+        --teal: #1e9c89;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: linear-gradient(180deg, #fbfaf7 0%, #fff 58%);
+      }
+      a { color: inherit; }
+      .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, .88); backdrop-filter: blur(16px); }
+      .nav { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; }
+      .mark { display: grid; width: 34px; height: 34px; place-items: center; color: #fff; background: var(--ink); border-radius: 8px; }
+      .nav a:last-child, .cta { text-decoration: none; border: 1px solid var(--ink); color: #fff; background: var(--ink); padding: 10px 14px; border-radius: 8px; }
+      .hero { display: grid; grid-template-columns: 1fr .82fr; gap: 36px; align-items: center; padding: 58px 0 34px; }
+      .kicker { display: inline-flex; color: #14574d; background: var(--mint); padding: 7px 10px; border-radius: 999px; font-size: 13px; font-weight: 750; }
+      h1 { margin: 18px 0 16px; font-size: clamp(36px, 6vw, 64px); line-height: 1.04; letter-spacing: 0; }
+      .lead { color: var(--muted); font-size: 18px; line-height: 1.8; }
+      .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+      .secondary { text-decoration: none; border: 1px solid var(--line); background: #fff; padding: 10px 14px; border-radius: 8px; }
+      .panel { border: 1px solid var(--line); background: #fff; border-radius: 8px; box-shadow: 0 18px 50px rgba(24,24,24,.08); padding: 20px; }
+      .panel h2 { margin: 0 0 12px; font-size: 21px; }
+      .panel p { margin: 0; color: var(--muted); line-height: 1.7; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+      .chip { border: 1px solid var(--line); background: #fbfbfb; border-radius: 999px; padding: 8px 10px; font-size: 13px; }
+      section { padding: 24px 0; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .card { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 20px; }
+      .card h2 { margin: 0 0 12px; font-size: 24px; }
+      .card p, .card li { color: var(--muted); line-height: 1.75; }
+      details { border-top: 1px solid var(--line); padding: 14px 0; }
+      details:first-of-type { border-top: 0; }
+      summary { cursor: pointer; font-weight: 800; }
+      details p { margin: 10px 0 0; }
+      .related { display: flex; flex-wrap: wrap; gap: 10px; }
+      .related a { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 10px 12px; text-decoration: none; }
+      ol { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+      li span { display: grid; place-items: center; width: 30px; height: 30px; color: #fff; background: var(--teal); border-radius: 8px; font-weight: 800; }
+      .bar { margin: 28px 0 56px; border: 1px solid #d9d3c9; background: #fffdf8; border-radius: 8px; padding: 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      footer { border-top: 1px solid var(--line); color: var(--muted); padding: 28px 0 40px; }
+      @media (max-width: 780px) {
+        .hero, .grid { grid-template-columns: 1fr; }
+        .bar, .nav { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell nav">
+        <a class="brand" href="../index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <a href="../index.html?mode=moments&amp;industry=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97&amp;audience=%E9%A4%90%E9%A5%AE%E5%BA%97%E4%B8%BB%E3%80%81%E6%8E%A2%E5%BA%97%E5%8D%9A%E4%B8%BB%E5%92%8C%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E8%BF%90%E8%90%A5&amp;offer=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%96%87%E6%A1%88%E7%94%9F%E6%88%90%E5%99%A8&amp;pain=%E8%8F%9C%E5%8D%95%E5%92%8C%E7%8E%AF%E5%A2%83%E9%83%BD%E6%9C%89%E5%8D%96%E7%82%B9%EF%BC%8C%E4%BD%86%E6%96%87%E6%A1%88%E5%8F%AA%E5%86%99%E5%A5%BD%E5%90%83%E3%80%81%E5%88%92%E7%AE%97%E3%80%81%E6%8E%A8%E8%8D%90%EF%BC%8C%E7%BC%BA%E5%B0%91%E5%85%B7%E4%BD%93%E8%8F%9C%E5%93%81%E5%92%8C%E5%88%B0%E5%BA%97%E5%9C%BA%E6%99%AF%E3%80%82%E9%80%82%E5%90%88%E7%94%9F%E6%88%90%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%86%85%E5%AE%B9%E3%80%81%E7%A7%81%E5%9F%9F%E4%BF%A1%E4%BB%BB%E6%96%87%E6%A1%88%E5%92%8C%E8%BD%BB%E8%BD%AC%E5%8C%96%E8%A1%A8%E8%BE%BE%E3%80%82&amp;tone=%E8%87%AA%E7%84%B6%E3%80%81%E6%9C%89%E4%BF%A1%E4%BB%BB%E6%84%9F#tool">打开生成器</a>
+      </div>
+    </header>
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">行业长尾页 · 免费工具入口</span>
+          <h1>餐饮探店朋友圈文案生成器</h1>
+          <p class="lead">餐饮探店朋友圈文案生成器，适合餐饮店主、探店博主和本地生活运营生成标题、开头、文案结构和 AI 提示词。无需登录，打开即可使用。</p>
+          <div class="actions">
+            <a class="cta" href="../index.html?mode=moments&amp;industry=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97&amp;audience=%E9%A4%90%E9%A5%AE%E5%BA%97%E4%B8%BB%E3%80%81%E6%8E%A2%E5%BA%97%E5%8D%9A%E4%B8%BB%E5%92%8C%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E8%BF%90%E8%90%A5&amp;offer=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%96%87%E6%A1%88%E7%94%9F%E6%88%90%E5%99%A8&amp;pain=%E8%8F%9C%E5%8D%95%E5%92%8C%E7%8E%AF%E5%A2%83%E9%83%BD%E6%9C%89%E5%8D%96%E7%82%B9%EF%BC%8C%E4%BD%86%E6%96%87%E6%A1%88%E5%8F%AA%E5%86%99%E5%A5%BD%E5%90%83%E3%80%81%E5%88%92%E7%AE%97%E3%80%81%E6%8E%A8%E8%8D%90%EF%BC%8C%E7%BC%BA%E5%B0%91%E5%85%B7%E4%BD%93%E8%8F%9C%E5%93%81%E5%92%8C%E5%88%B0%E5%BA%97%E5%9C%BA%E6%99%AF%E3%80%82%E9%80%82%E5%90%88%E7%94%9F%E6%88%90%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%86%85%E5%AE%B9%E3%80%81%E7%A7%81%E5%9F%9F%E4%BF%A1%E4%BB%BB%E6%96%87%E6%A1%88%E5%92%8C%E8%BD%BB%E8%BD%AC%E5%8C%96%E8%A1%A8%E8%BE%BE%E3%80%82&amp;tone=%E8%87%AA%E7%84%B6%E3%80%81%E6%9C%89%E4%BF%A1%E4%BB%BB%E6%84%9F#tool">立即生成内容</a>
+            <a class="secondary" href="../index.html#industries">查看其他行业</a>
+          </div>
+        </div>
+        <aside class="panel">
+          <h2>适合谁用</h2>
+          <p>餐饮店主、探店博主和本地生活运营。尤其适合已经有产品或内容方向，但卡在标题、开头和表达结构的人。</p>
+          <div class="chips">
+            <span class="chip">餐饮探店</span>
+            <span class="chip">标题生成</span>
+            <span class="chip">文案结构</span>
+            <span class="chip">AI 提示词</span>
+          </div>
+        </aside>
+      </section>
+      <section class="shell grid">
+        <article class="card">
+          <h2>常见卡点</h2>
+          <p>菜单和环境都有卖点，但文案只写好吃、划算、推荐，缺少具体菜品和到店场景。适合生成朋友圈内容、私域信任文案和轻转化表达。</p>
+        </article>
+        <article class="card">
+          <h2>可以生成什么</h2>
+          <p>打开工具后，会自动填好行业、目标用户和痛点。你可以生成小红书标题、短视频开头、商品标题、朋友圈文案、30 天内容日历和可复制的 AI 提示词。</p>
+        </article>
+      </section>
+      <section class="shell">
+        <article class="card">
+          <h2>标题示例</h2>
+          <ol><li><span>1</span>这家店适合下班后不想排队的人</li><li><span>2</span>人均 50 的工作日午餐怎么写更具体</li><li><span>3</span>新店开业别只发优惠券</li></ol>
+        </article>
+      </section>
+      <section class="shell grid">
+        <article class="card">
+          <h2>常见问题</h2>
+          <details>
+            <summary>餐饮探店朋友圈文案生成器适合谁用？</summary>
+            <p>适合餐饮店主、探店博主和本地生活运营，尤其适合已经有内容方向，但卡在标题、开头、卖点表达和 AI 提问方式的人。</p>
+          </details><details>
+            <summary>生成结果可以直接发布吗？</summary>
+            <p>可以作为第一版草稿使用，但建议结合真实产品、真实案例和平台规则再做微调，避免标题夸张或承诺过度。</p>
+          </details><details>
+            <summary>这个工具和普通提示词有什么区别？</summary>
+            <p>普通提示词需要你自己组织场景信息，这个页面会预先填好行业、目标用户和常见痛点，再把用户带到生成器里快速生成。</p>
+          </details>
+        </article>
+        <article class="card">
+          <h2>相关工具</h2>
+          <div class="related"><a href="restaurant-xiaohongshu-title-generator.html">餐饮探店小红书标题生成器</a><a href="restaurant-video-title-generator.html">餐饮探店短视频标题生成器</a><a href="restaurant-product-title-optimizer.html">餐饮探店商品标题优化器</a></div>
+        </article>
+      </section>
+      <div class="shell">
+        <div class="bar">
+          <div>
+            <strong>把这个页面当成搜索入口，把首页工具当成转化入口。</strong>
+            <p style="margin: 8px 0 0; color: var(--muted); line-height: 1.7;">这是程序化 SEO 的基本结构：每个行业页解决一个具体搜索词，再把用户带到同一个工具。</p>
+          </div>
+          <a class="cta" href="../index.html?mode=moments&amp;industry=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97&amp;audience=%E9%A4%90%E9%A5%AE%E5%BA%97%E4%B8%BB%E3%80%81%E6%8E%A2%E5%BA%97%E5%8D%9A%E4%B8%BB%E5%92%8C%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E8%BF%90%E8%90%A5&amp;offer=%E9%A4%90%E9%A5%AE%E6%8E%A2%E5%BA%97%E6%9C%8B%E5%8F%8B%E5%9C%88%E6%96%87%E6%A1%88%E7%94%9F%E6%88%90%E5%99%A8&amp;pain=%E8%8F%9C%E5%8D%95%E5%92%8C%E7%8E%AF%E5%A2%83%E9%83%BD%E6%9C%89%E5%8D%96%E7%82%B9%EF%BC%8C%E4%BD%86%E6%96%87%E6%A1%88%E5%8F%AA%E5%86%99%E5%A5%BD%E5%90%83%E3%80%81%E5%88%92%E7%AE%97%E3%80%81%E6%8E%A8%E8%8D%90%EF%BC%8C%E7%BC%BA%E5%B0%91%E5%85%B7%E4%BD%93%E8%8F%9C%E5%93%81%E5%92%8C%E5%88%B0%E5%BA%97%E5%9C%BA%E6%99%AF%E3%80%82%E9%80%82%E5%90%88%E7%94%9F%E6%88%90%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%86%85%E5%AE%B9%E3%80%81%E7%A7%81%E5%9F%9F%E4%BF%A1%E4%BB%BB%E6%96%87%E6%A1%88%E5%92%8C%E8%BD%BB%E8%BD%AC%E5%8C%96%E8%A1%A8%E8%BE%BE%E3%80%82&amp;tone=%E8%87%AA%E7%84%B6%E3%80%81%E6%9C%89%E4%BF%A1%E4%BB%BB%E6%84%9F#tool">开始生成</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="shell">标题工厂 · 餐饮探店朋友圈文案生成器</div>
+    </footer>
+  </body>
+</html>

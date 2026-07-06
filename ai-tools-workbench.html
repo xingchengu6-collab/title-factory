@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 工具内容工作台 - 标题工厂</title>
+    <meta
+      name="description"
+      content="AI 工具内容工作台，面向 AI 工具创作者、教程博主和独立开发者，支持品牌语气保存、批量选题生成、内容日历和导出。"
+    />
+    <style>
+      :root {
+        --ink: #171717;
+        --muted: #626262;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --soft: #f6f3ee;
+        --mint: #dff4ea;
+        --teal: #1e9c89;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: linear-gradient(180deg, #fbfaf7 0%, #ffffff 60%);
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 66px;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 850;
+      }
+
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 8px;
+      }
+
+      .nav a:not(.brand) {
+        color: var(--ink);
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 8px;
+        padding: 9px 12px;
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+        align-items: center;
+        padding: 46px 0 28px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        color: #14574d;
+        background: var(--mint);
+        border-radius: 999px;
+        padding: 7px 10px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(36px, 6vw, 66px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .hero-panel,
+      .panel,
+      .output-panel {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        border-radius: 8px;
+        box-shadow: 0 16px 42px rgba(24, 24, 24, 0.07);
+      }
+
+      .hero-panel {
+        padding: 20px;
+      }
+
+      .hero-panel h2,
+      .panel h2,
+      .output-panel h2 {
+        margin: 0 0 12px;
+      }
+
+      .hero-panel ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .workbench {
+        display: grid;
+        grid-template-columns: 390px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 18px 0 54px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      label {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid #d7d7d7;
+        background: #fff;
+        color: var(--ink);
+        border-radius: 8px;
+        padding: 11px 12px;
+        outline: none;
+      }
+
+      textarea {
+        min-height: 96px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(30, 156, 137, 0.13);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .primary,
+      .ghost {
+        border-radius: 8px;
+        padding: 10px 13px;
+        cursor: pointer;
+      }
+
+      .primary {
+        color: #fff;
+        background: var(--ink);
+        border: 1px solid var(--ink);
+      }
+
+      .ghost {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .output-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .output-head h2 {
+        margin: 0;
+      }
+
+      .outputs {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .output {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        border: 1px solid #ececec;
+        background: #fbfbfb;
+        border-radius: 8px;
+        padding: 13px;
+      }
+
+      .num {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        color: #fff;
+        background: var(--teal);
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .output p {
+        margin: 4px 0 0;
+        line-height: 1.65;
+      }
+
+      .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        transform: translateY(18px);
+        opacity: 0;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 8px;
+        padding: 11px 14px;
+        transition: 0.18s ease;
+        pointer-events: none;
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .workbench {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 22px, 1180px);
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+
+        .actions,
+        .output-head {
+          align-items: stretch;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell nav">
+        <a class="brand" href="index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <a href="index.html#pricing">价格</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">垂直工作台 · AI 工具创作者</span>
+          <h1>把一个 AI 工具，拆成 30 天可发布内容。</h1>
+          <p class="lead">
+            保存你的品牌语气，批量输入工具名或选题，一次生成标题、短视频开头、提示词和 30 天内容日历。
+          </p>
+        </div>
+        <aside class="hero-panel">
+          <h2>更接近 Pro 的能力</h2>
+          <ul>
+            <li>品牌语气保存在本地，下次打开继续用</li>
+            <li>支持批量工具/主题，一行一个</li>
+            <li>可导出 Markdown 和 CSV，方便直接整理成内容库</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="shell workbench">
+        <form class="panel" id="workbenchForm">
+          <h2>输入</h2>
+          <div class="field">
+            <label for="audience">目标用户</label>
+            <input id="audience" value="AI 工具创作者、教程博主和独立开发者" />
+          </div>
+          <div class="field">
+            <label for="topics">工具 / 主题</label>
+            <textarea id="topics">AI 视频脚本生成器
+AI 简历优化工具
+AI 小红书标题生成器</textarea>
+          </div>
+          <div class="field">
+            <label for="pain">用户痛点</label>
+            <textarea id="pain">用户收藏了很多 AI 工具，但不知道具体怎么用、怎么选、怎么把工具变成工作流。</textarea>
+          </div>
+          <div class="field">
+            <label for="voice">品牌语气</label>
+            <textarea id="voice">具体、克制、偏实战，少用夸张词，多给可执行步骤。</textarea>
+          </div>
+          <div class="field">
+            <label for="mode">生成类型</label>
+            <select id="mode">
+              <option value="calendar">30 天内容日历</option>
+              <option value="xhs">小红书标题</option>
+              <option value="video">短视频开头</option>
+              <option value="prompt">AI 提示词</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button class="primary" id="generateButton" type="submit">生成工作台内容</button>
+            <button class="ghost" id="saveVoice" type="button">保存语气</button>
+            <button class="ghost" id="loadExample" type="button">示例</button>
+          </div>
+        </form>
+
+        <section class="output-panel">
+          <div class="output-head">
+            <h2 id="outputTitle">生成结果</h2>
+            <div class="actions">
+              <button class="ghost" id="copyAll" type="button">复制</button>
+              <button class="ghost" id="exportMarkdown" type="button">导出 MD</button>
+              <button class="ghost" id="exportCsv" type="button">导出 CSV</button>
+            </div>
+          </div>
+          <div class="outputs" id="outputs"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast">已完成</div>
+
+    <script>
+      const form = document.querySelector("#workbenchForm");
+      const outputs = document.querySelector("#outputs");
+      const outputTitle = document.querySelector("#outputTitle");
+      const generateButton = document.querySelector("#generateButton");
+      const toast = document.querySelector("#toast");
+      const fields = {
+        audience: document.querySelector("#audience"),
+        topics: document.querySelector("#topics"),
+        pain: document.querySelector("#pain"),
+        voice: document.querySelector("#voice"),
+        mode: document.querySelector("#mode"),
+      };
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1400);
+      }
+
+      function track(name, source = "") {
+        const body = JSON.stringify({
+          name,
+          page: window.location.pathname,
+          mode: fields.mode.value,
+          industry: "AI 工具",
+          source,
+        });
+        navigator.sendBeacon?.("/api/event", new Blob([body], { type: "application/json" })) ||
+          fetch("/api/event", { method: "POST", headers: { "content-type": "application/json" }, body, keepalive: true }).catch(() => {});
+      }
+
+      function render(items) {
+        outputs.innerHTML = items
+          .map((item, index) => `<article class="output"><span class="num">${index + 1}</span><p>${item}</p></article>`)
+          .join("");
+      }
+
+      function currentItems() {
+        return Array.from(outputs.querySelectorAll("p")).map((node) => node.textContent.trim());
+      }
+
+      function downloadText(filename, text, type) {
+        const blob = new Blob([text], { type });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      async function generate() {
+        const topics = fields.topics.value
+          .split("\n")
+          .map((topic) => topic.trim())
+          .filter(Boolean);
+        const mode = fields.mode.value;
+        const allItems = [];
+        generateButton.disabled = true;
+        generateButton.textContent = "生成中...";
+        render(["正在生成批量内容..."]);
+
+        for (const topic of topics) {
+          const response = await fetch("/api/generate", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              mode,
+              industry: "AI 工具",
+              audience: fields.audience.value,
+              offer: topic,
+              pain: `${fields.pain.value} 品牌语气：${fields.voice.value}`,
+              tone: "具体、克制、实战",
+            }),
+          });
+          const payload = await response.json();
+          const items = Array.isArray(payload.items) ? payload.items : [];
+          allItems.push(...items.map((item) => `${topic}｜${item}`));
+        }
+
+        outputTitle.textContent = mode === "calendar" ? "批量内容日历" : "批量生成结果";
+        render(allItems);
+        generateButton.disabled = false;
+        generateButton.textContent = "生成工作台内容";
+        track("ai-tools-workbench-generate", `${topics.length} topics`);
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        await generate();
+      });
+
+      document.querySelector("#saveVoice").addEventListener("click", () => {
+        localStorage.setItem("titleFactoryAiToolsVoice", fields.voice.value);
+        showToast("品牌语气已保存");
+        track("ai-tools-save-voice");
+      });
+
+      document.querySelector("#loadExample").addEventListener("click", () => {
+        fields.topics.value = "AI 会议纪要工具\nAI 邮件回复助手\nAI 电商 Listing 优化器";
+        fields.pain.value = "用户不知道工具适合什么场景，也不知道如何把工具嵌入日常工作流。";
+        showToast("已填入示例");
+      });
+
+      document.querySelector("#copyAll").addEventListener("click", async () => {
+        await navigator.clipboard.writeText(currentItems().map((item, index) => `${index + 1}. ${item}`).join("\n"));
+        showToast("已复制");
+        track("ai-tools-workbench-copy");
+      });
+
+      document.querySelector("#exportMarkdown").addEventListener("click", () => {
+        const text = ["# AI 工具内容工作台", "", ...currentItems().map((item, index) => `${index + 1}. ${item}`)].join("\n");
+        downloadText("ai-tools-workbench.md", text, "text/markdown;charset=utf-8");
+        track("ai-tools-workbench-export-md");
+      });
+
+      document.querySelector("#exportCsv").addEventListener("click", () => {
+        const rows = [["index", "content"]].concat(currentItems().map((item, index) => [index + 1, item]));
+        const text = rows.map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
+        downloadText("ai-tools-workbench.csv", text, "text/csv;charset=utf-8");
+        track("ai-tools-workbench-export-csv");
+      });
+
+      const savedVoice = localStorage.getItem("titleFactoryAiToolsVoice");
+      if (savedVoice) fields.voice.value = savedVoice;
+      render(["输入几个 AI 工具或主题，然后生成批量内容。"]);
+      track("ai-tools-workbench-view");
+    </script>
+  </body>
+</html>
