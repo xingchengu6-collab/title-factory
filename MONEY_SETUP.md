@@ -4,7 +4,7 @@
 
 ## 必填配置
 
-`.env` 或部署平台环境变量：
+如果部署在 Node、Netlify Functions 或 Render，用 `.env` 或部署平台环境变量：
 
 ```text
 SITE_URL=https://你的正式域名
@@ -14,6 +14,26 @@ TEMPLATE_PACK_URL=https://你的模板包购买链接
 PRO_CHECKOUT_URL=https://你的 Pro 订阅链接
 BUSINESS_LICENSE_URL=https://你的商业授权购买链接
 ```
+
+如果当前继续用 GitHub Pages 静态站，直接改根目录：
+
+```text
+checkout-config.json
+```
+
+把对应链接填进去：
+
+```json
+{
+  "templatePackUrl": "https://你的模板包购买链接",
+  "proCheckoutUrl": "https://你的 Pro 订阅链接",
+  "businessLicenseUrl": "https://你的商业授权购买链接"
+}
+```
+
+没有正式支付链接时保持空字符串，按钮会继续指向免费样品包或说明页，不会跳到空页面。
+
+页面会同时读取 `checkout-config.json` 和 `/api/config`；如果部署平台环境变量里也填了购买链接，环境变量会优先生效。
 
 ## 模板包上架
 

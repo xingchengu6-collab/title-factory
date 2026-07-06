@@ -64,6 +64,8 @@ npm start
 
 没有支付链接时，可以先留空，按钮会回到等待名单。
 
+如果当前使用 GitHub Pages 静态站，环境变量不会自动生效。拿到支付链接后，直接填写根目录的 `checkout-config.json`，再同步到 GitHub Pages。
+
 ## 5. 其他部署平台
 
 如果只想最快上线，选支持 Node 服务的平台，例如 Render、Railway、Fly.io 或 VPS。

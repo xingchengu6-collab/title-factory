@@ -433,28 +433,39 @@
     </footer>
 
     <script>
-      async function applyBusinessCheckoutConfig() {
-        try {
-          const response = await fetch("/api/config");
-          if (!response.ok) return;
-          const config = await response.json();
-          if (!config.businessLicenseUrl) return;
-
-          const button = document.querySelector("#businessBuyButton");
-          const title = document.querySelector("#checkoutTitle");
-          const copy = document.querySelector("#checkoutCopy");
-          const note = document.querySelector("#checkoutNote");
-
-          button.href = config.businessLicenseUrl;
-          button.textContent = "立即购买商业授权";
-          button.target = "_blank";
-          button.rel = "noreferrer";
-          title.textContent = "购买商业授权";
-          copy.textContent = "支付完成后按平台规则自动交付商业授权压缩包，包含完整模板包、授权边界、团队 SOP 和客户项目流程。";
-          note.textContent = "商业授权适合团队复用和客户项目打样；个人使用可先选择 ¥99 完整包。";
-        } catch {
-          // Keep static fallback links.
+      async function readCheckoutConfig() {
+        const config = {};
+        for (const source of ["/checkout-config.json", "/api/config"]) {
+          try {
+            const response = await fetch(source, { cache: "no-store" });
+            if (!response.ok) continue;
+            const data = await response.json();
+            for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl"]) {
+              if (data[key]) config[key] = data[key];
+            }
+          } catch {
+            // Try the next config source.
+          }
         }
+        return config;
+      }
+
+      async function applyBusinessCheckoutConfig() {
+        const config = await readCheckoutConfig();
+        if (!config.businessLicenseUrl) return;
+
+        const button = document.querySelector("#businessBuyButton");
+        const title = document.querySelector("#checkoutTitle");
+        const copy = document.querySelector("#checkoutCopy");
+        const note = document.querySelector("#checkoutNote");
+
+        button.href = config.businessLicenseUrl;
+        button.textContent = "立即购买商业授权";
+        button.target = "_blank";
+        button.rel = "noreferrer";
+        title.textContent = "购买商业授权";
+        copy.textContent = "支付完成后按平台规则自动交付商业授权压缩包，包含完整模板包、授权边界、团队 SOP 和客户项目流程。";
+        note.textContent = "商业授权适合团队复用和客户项目打样；个人使用可先选择 ¥99 完整包。";
       }
 
       applyBusinessCheckoutConfig();

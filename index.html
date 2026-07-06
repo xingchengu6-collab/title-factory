@@ -1286,27 +1286,39 @@
         window.setTimeout(() => toast.classList.remove("show"), 1500);
       }
 
+      async function readCheckoutConfig() {
+        const config = {};
+        for (const source of ["/checkout-config.json", "/api/config"]) {
+          try {
+            const response = await fetch(source, { cache: "no-store" });
+            if (!response.ok) continue;
+            const data = await response.json();
+            for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl"]) {
+              if (data[key]) config[key] = data[key];
+            }
+          } catch {
+            // Try the next config source.
+          }
+        }
+        return config;
+      }
+
       async function applyCommercialConfig() {
-        try {
-          const response = await fetch("/api/config");
-          const config = await response.json();
-          if (config.templatePackUrl) {
-            templatePackCta.href = config.templatePackUrl;
-            templatePackCta.target = "_blank";
-            templatePackCta.rel = "noreferrer";
-          }
-          if (config.proCheckoutUrl) {
-            proCta.href = config.proCheckoutUrl;
-            proCta.target = "_blank";
-            proCta.rel = "noreferrer";
-          }
-          if (config.businessLicenseUrl) {
-            businessLicenseCta.href = config.businessLicenseUrl;
-            businessLicenseCta.target = "_blank";
-            businessLicenseCta.rel = "noreferrer";
-          }
-        } catch {
-          // Keep waitlist fallback links.
+        const config = await readCheckoutConfig();
+        if (config.templatePackUrl) {
+          templatePackCta.href = config.templatePackUrl;
+          templatePackCta.target = "_blank";
+          templatePackCta.rel = "noreferrer";
+        }
+        if (config.proCheckoutUrl) {
+          proCta.href = config.proCheckoutUrl;
+          proCta.target = "_blank";
+          proCta.rel = "noreferrer";
+        }
+        if (config.businessLicenseUrl) {
+          businessLicenseCta.href = config.businessLicenseUrl;
+          businessLicenseCta.target = "_blank";
+          businessLicenseCta.rel = "noreferrer";
         }
       }
 

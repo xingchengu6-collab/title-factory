@@ -73,6 +73,8 @@ PRO_CHECKOUT_URL=https://你的 Pro 购买链接
 BUSINESS_LICENSE_URL=https://你的商业授权购买链接
 ```
 
+如果只部署在 GitHub Pages 这种静态站，也可以直接填写根目录的 `checkout-config.json`。页面会读取 `checkout-config.json` 和 `/api/config`；部署平台环境变量有值时优先生效。
+
 等待名单只是早期验证用，真正上线后可以迁到邮件服务、数据库或支付平台。
 
 ## 轻量数据记录

@@ -719,16 +719,27 @@
         link.rel = "noreferrer";
       }
 
-      async function applyCheckoutConfig() {
-        try {
-          const response = await fetch("/api/config");
-          if (!response.ok) return;
-          const config = await response.json();
-          setExternalCheckout(buyButton, config.templatePackUrl, "立即购买");
-          setExternalCheckout(businessLicenseUpsell, config.businessLicenseUrl, "购买商业授权");
-        } catch {
-          // Keep static fallback links.
+      async function readCheckoutConfig() {
+        const config = {};
+        for (const source of ["/checkout-config.json", "/api/config"]) {
+          try {
+            const response = await fetch(source, { cache: "no-store" });
+            if (!response.ok) continue;
+            const data = await response.json();
+            for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl"]) {
+              if (data[key]) config[key] = data[key];
+            }
+          } catch {
+            // Try the next config source.
+          }
         }
+        return config;
+      }
+
+      async function applyCheckoutConfig() {
+        const config = await readCheckoutConfig();
+        setExternalCheckout(buyButton, config.templatePackUrl, "立即购买");
+        setExternalCheckout(businessLicenseUpsell, config.businessLicenseUrl, "购买商业授权");
       }
 
       applyCheckoutConfig();

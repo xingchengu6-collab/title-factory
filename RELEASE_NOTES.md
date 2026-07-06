@@ -35,6 +35,8 @@ PRO_CHECKOUT_URL=Pro 购买或订阅链接
 BUSINESS_LICENSE_URL=商业授权购买链接
 ```
 
+GitHub Pages 静态站可以改 `checkout-config.json` 来配置购买链接。
+
 ## 发布命令
 
 ```bash
