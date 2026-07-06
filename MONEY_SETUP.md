@@ -19,13 +19,13 @@ PRO_CHECKOUT_URL=https://你的 Pro 订阅链接
 可直接上架的交付文件：
 
 ```text
-downloads/ai-tools-paid-template-pack.md
+private-delivery/title-factory-paid-template-pack-v1.zip
 ```
 
 建议商品名：
 
 ```text
-AI 工具内容增长模板包
+标题工厂付费模板包：1000 条标题/文案/提示词素材库
 ```
 
 建议价格：
@@ -36,12 +36,28 @@ AI 工具内容增长模板包
 
 商品卖点：
 
-- 100 个 AI 工具内容标题模板
-- 30 天 AI 工具内容日历
-- 20 个短视频开头结构
-- 20 个工具测评结构
-- 20 个提示词模板
-- 10 个转化入口文案
+- 1000 条标题、开头、商品页、朋友圈和 AI 提示词模板
+- 750 条 30 天内容日历方向
+- 25 个行业分类
+- Markdown 模板库、CSV 表格版和使用说明
+- 适合下载后直接复制、筛选、改写和复用
+
+## 当前支付入口状态
+
+- GitHub Pages 公开站已上线。
+- 面包多账号已提交创作者申请；当前提示“未审核用户，需要先申请创作者”，因此还不能创建商品。
+- `paid-template-pack.html` 暂时展示“自动购买入口接入中”，按钮指向免费样品包，避免空链接。
+- 审核通过后，在面包多创建单品，上传 `private-delivery/title-factory-paid-template-pack-v1.zip`，拿到商品链接后填入购买按钮。
+
+面包多上架推荐信息：
+
+```text
+标题：标题工厂付费模板包：1000 条标题/文案/提示词素材库
+价格：99 元
+交付：上传 private-delivery/title-factory-paid-template-pack-v1.zip
+封面：private-delivery/title-factory-paid-template-pack-v1/cover-title-factory-paid-pack.png
+文案：private-delivery/title-factory-paid-template-pack-v1/listing-copy.md
+```
 
 ## Pro 订阅页
 

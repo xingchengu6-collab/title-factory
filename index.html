@@ -870,18 +870,19 @@
             <h3>免费下载入门模板包</h3>
             <p>包含标题公式、短视频开头、商品标题结构、AI 提示词和 30 天内容方向。它是后续付费模板包的样品。</p>
             <div class="download-actions">
-              <a href="downloads/title-factory-starter-pack.md" download>下载模板包</a>
-              <a class="secondary-link" href="downloads/title-factory-starter-pack.md">在线查看</a>
+              <a href="downloads/title-factory-starter-pack.csv" download>下载 CSV</a>
+              <a class="secondary-link" href="downloads/title-factory-starter-pack.html">在线查看</a>
+              <a class="secondary-link" href="downloads/title-factory-starter-pack.md">Markdown 版</a>
               <a class="secondary-link" href="paid-template-pack.html">查看 AI 工具付费包</a>
             </div>
           </article>
           <article class="waitlist">
-            <h3>加入 Pro 等待名单</h3>
-            <p>Pro 版会优先做批量生成、保存品牌语气、导出表格、更多行业模板。留下邮箱，后续上线时自动通知。</p>
+            <h3>保存购买意向</h3>
+            <p>自动购买入口接入中。先留下邮箱，本页面会在本机保存这条意向；等购买链接上线后，再回到这里即可继续。</p>
             <form class="waitlist-form" id="waitlistForm">
               <label class="sr-only" for="waitlistEmail">邮箱</label>
               <input id="waitlistEmail" name="email" type="email" placeholder="you@example.com" required />
-              <button class="primary" id="waitlistButton" type="submit">加入等待名单</button>
+              <button class="primary" id="waitlistButton" type="submit">保存意向</button>
             </form>
             <div class="form-note" id="waitlistNote"></div>
           </article>
@@ -1283,24 +1284,34 @@
         waitlistButton.disabled = true;
         waitlistButton.textContent = "提交中...";
         waitlistNote.textContent = "";
+        const email = waitlistEmail.value.trim();
+
+        function saveLocalIntent() {
+          const saved = JSON.parse(localStorage.getItem("titleFactoryPurchaseIntents") || "[]");
+          saved.push({ email, source: "homepage-pro-waitlist", createdAt: new Date().toISOString() });
+          localStorage.setItem("titleFactoryPurchaseIntents", JSON.stringify(saved.slice(-20)));
+          waitlistForm.reset();
+          waitlistNote.textContent = "已在本机保存购买意向。购买入口上线后，请回到本页继续。";
+          showToast("已保存意向");
+        }
 
         try {
           const response = await fetch("/api/waitlist", {
             method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ email: waitlistEmail.value, source: "homepage-pro-waitlist" }),
+            body: JSON.stringify({ email, source: "homepage-pro-waitlist" }),
           });
           const payload = await response.json();
           if (!response.ok) throw new Error(payload.error || "提交失败");
           waitlistForm.reset();
-          waitlistNote.textContent = "已加入等待名单。";
+          waitlistNote.textContent = payload.storage ? "已保存购买意向。" : "已加入等待名单。";
           track("waitlist-submit", { source: "homepage-pro-waitlist" });
-          showToast("已加入等待名单");
+          showToast("已保存意向");
         } catch (error) {
-          waitlistNote.textContent = error.message || "提交失败，请稍后再试。";
+          saveLocalIntent();
         } finally {
           waitlistButton.disabled = false;
-          waitlistButton.textContent = "加入等待名单";
+          waitlistButton.textContent = "保存意向";
         }
       });
 

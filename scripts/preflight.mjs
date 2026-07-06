@@ -8,6 +8,8 @@ const requiredFiles = [
   "server.mjs",
   "sitemap.xml",
   "robots.txt",
+  "downloads/title-factory-starter-pack.html",
+  "downloads/title-factory-starter-pack.csv",
   "downloads/title-factory-starter-pack.md",
   "downloads/ai-tools-paid-template-pack.md",
   "data/events.csv",
@@ -56,11 +58,11 @@ else fail("SEO page count", `${tools.length} pages`);
 
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 127) pass("sitemap entry count", "127 entries");
+if (sitemapEntries === 128) pass("sitemap entry count", "128 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "paid-template-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
