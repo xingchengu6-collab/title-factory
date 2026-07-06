@@ -443,6 +443,80 @@ AI 小红书标题生成器</textarea>
         URL.revokeObjectURL(url);
       }
 
+      function painShort(value = "") {
+        return (
+          value
+            .replace(/[。！？!?]/g, "，")
+            .split("，")
+            .map((part) => part.trim())
+            .filter(Boolean)[0]
+            ?.slice(0, 22) || "内容没有转化"
+        );
+      }
+
+      function localItems(mode, topic) {
+        const shortPain = painShort(fields.pain.value);
+        const voice = fields.voice.value.trim() || "具体、克制、实战";
+        const templates = {
+          xhs: [
+            `${topic}别再只写功能了，先讲清这个场景`,
+            `适合${fields.audience.value}的${topic}内容选题清单`,
+            `${topic}怎么写才不像广告？`,
+            `我会这样介绍${topic}：痛点、场景、结果`,
+            `${topic}没人点？先改这 3 个标题`,
+            `${fields.audience.value}最容易忽略的${topic}使用场景`,
+            `${topic}内容低转化，可能是开头没说中${shortPain}`,
+            `把${topic}讲清楚的一条小红书结构`,
+          ],
+          video: [
+            `如果你还不知道${topic}适合谁，先看这 30 秒`,
+            `${topic}不是给所有人用的，尤其适合这种场景`,
+            `别急着买${topic}，先确认这 3 件事`,
+            `${fields.audience.value}如何把${topic}放进日常工作流`,
+            `一个例子讲清${topic}能解决什么问题`,
+            `${topic}为什么没人咨询？问题可能在表达`,
+            `用${voice}的方式介绍${topic}，开头可以这样说`,
+            `${topic}短视频脚本：痛点、演示、行动`,
+          ],
+          product: [
+            `${topic}｜适合${fields.audience.value}，解决${shortPain}`,
+            `${topic}：AI 工具场景介绍、卖点和使用建议`,
+            `${fields.audience.value}专用${topic}，打开即可套用`,
+            `${topic}完整介绍模板：功能、场景、结果`,
+            `${topic}标题优化版：人群 + 场景 + 价值`,
+            `${topic}工具包，减少解释成本，提升转化`,
+            `${topic}，适合需要${voice}表达的产品页`,
+            `${topic}｜从痛点到行动的销售页标题`,
+          ],
+          moments: [
+            `最近整理${topic}时发现，很多用户不是不需要工具，而是不知道它适合哪个具体场景。`,
+            `${topic}这类产品不要只讲功能，先讲${fields.audience.value}正在遇到的${shortPain}。`,
+            `如果要用${voice}的语气介绍${topic}，我会先写一个真实工作流，再写工具怎么介入。`,
+            `${topic}的价值不是替人做决定，而是把重复、耗时、容易出错的部分变简单。`,
+            `今天给${topic}补了一版内容结构：痛点、适用人群、使用前后对比、行动入口。`,
+            `${fields.audience.value}看完${topic}介绍后，最应该知道的是：什么时候用、怎么用、能省什么。`,
+            `${topic}文案不要急着成交，先让用户觉得“这个场景说的是我”。`,
+            `一个好工具页的标准：用户看完${topic}，能立刻想到自己的一个使用场景。`,
+          ],
+          prompt: [
+            `你是 AI 工具内容策划。请围绕“${topic}”生成 20 个小红书标题，目标用户是${fields.audience.value}，痛点是${fields.pain.value}，语气${voice}。`,
+            `你是短视频编导。请为“${topic}”生成 10 个开头钩子，每个开头都要指出一个具体使用场景。`,
+            `你是产品页文案顾问。请把“${topic}”拆成目标人群、核心痛点、功能卖点、行动按钮四部分。`,
+            `你是私域文案编辑。请为“${topic}”写 7 条朋友圈文案，不要硬广，要像真实经验分享。`,
+            `你是 SEO 编辑。请为“${topic}”生成页面标题、描述、H1、FAQ 和 20 个长尾关键词。`,
+            `你是增长顾问。请给“${topic}”设计 30 天内容计划，每天包含标题、正文方向和结尾引导。`,
+            `你是案例编辑。请为“${topic}”写 5 个用户场景案例，每个案例包含使用前、使用中、使用后。`,
+            `你是文案改写助手。请把普通的“${topic}”介绍改成${voice}风格，减少夸张承诺。`,
+          ],
+          calendar: Array.from({ length: 30 }, (_, index) => {
+            const day = index + 1;
+            const themes = ["痛点解释", "场景案例", "误区纠正", "清单整理", "对比说明", "行动建议"];
+            return `第 ${day} 天｜${themes[index % themes.length]}：围绕${topic}，给${fields.audience.value}写一条${voice}的内容，解决“${shortPain}”。`;
+          }),
+        };
+        return templates[mode] || templates.xhs;
+      }
+
       async function generate() {
         const topics = fields.topics.value
           .split("\n")
@@ -455,20 +529,26 @@ AI 小红书标题生成器</textarea>
         render(["正在生成批量内容..."]);
 
         for (const topic of topics) {
-          const response = await fetch("/api/generate", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-              mode,
-              industry: "AI 工具",
-              audience: fields.audience.value,
-              offer: topic,
-              pain: `${fields.pain.value} 品牌语气：${fields.voice.value}`,
-              tone: "具体、克制、实战",
-            }),
-          });
-          const payload = await response.json();
-          const items = Array.isArray(payload.items) ? payload.items : [];
+          let items = [];
+          try {
+            const response = await fetch("/api/generate", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({
+                mode,
+                industry: "AI 工具",
+                audience: fields.audience.value,
+                offer: topic,
+                pain: `${fields.pain.value} 品牌语气：${fields.voice.value}`,
+                tone: "具体、克制、实战",
+              }),
+            });
+            const payload = await response.json();
+            items = Array.isArray(payload.items) ? payload.items : [];
+          } catch {
+            items = localItems(mode, topic);
+          }
+          if (items.length === 0) items = localItems(mode, topic);
           allItems.push(...items.map((item) => `${topic}｜${item}`));
         }
 

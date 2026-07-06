@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://title-factory.example.com/sitemap.xml
+Sitemap: https://xingchengu6-collab.github.io/sitemap.xml
