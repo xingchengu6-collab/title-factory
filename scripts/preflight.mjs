@@ -73,6 +73,18 @@ for (const needle of ["titleFactoryAiToolsVoice", "/api/generate", "ai-tools-wor
   else fail(`workbench contains ${needle}`, "missing");
 }
 
+const paidPack = await readFile("paid-template-pack.html", "utf8");
+for (const needle of ["适合和不适合", "常见问题", "application/ld+json", "PreOrder"]) {
+  if (paidPack.includes(needle)) pass(`paid pack page contains ${needle}`);
+  else fail(`paid pack page contains ${needle}`, "missing");
+}
+
+const starterPackPage = await readFile("downloads/title-factory-starter-pack.html", "utf8");
+for (const needle of ["怎么试用这份样品", "样品包之后做什么", "application/ld+json"]) {
+  if (starterPackPage.includes(needle)) pass(`starter pack page contains ${needle}`);
+  else fail(`starter pack page contains ${needle}`, "missing");
+}
+
 const events = await readFile("data/events.csv", "utf8");
 if (events.trim() === "created_at,name,page,mode,industry,source") pass("events csv is clean");
 else fail("events csv is clean", "contains data rows");

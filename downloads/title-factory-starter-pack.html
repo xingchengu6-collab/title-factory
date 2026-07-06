@@ -9,6 +9,13 @@
       content="下载标题工厂免费样品包，包含小红书标题公式、短视频开头、商品标题结构、AI 提示词和 30 天内容方向。"
     />
     <link rel="canonical" href="https://xingchengu6-collab.github.io/downloads/title-factory-starter-pack.html" />
+    <meta property="og:title" content="标题工厂免费样品包 - 标题、短视频开头和 AI 提示词模板" />
+    <meta
+      property="og:description"
+      content="先下载免费样品包，试用标题公式、短视频开头、商品标题结构和 AI 提示词，再决定是否需要完整模板库。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://xingchengu6-collab.github.io/downloads/title-factory-starter-pack.html" />
     <style>
       :root {
         --ink: #171717;
@@ -196,6 +203,39 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
       }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: step;
+      }
+      .step {
+        border: 1px solid #dfe4d8;
+        border-radius: 8px;
+        background: #fff;
+        padding: 18px;
+        counter-increment: step;
+      }
+      .step::before {
+        content: counter(step);
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--green);
+        font-weight: 900;
+      }
+      .step strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .step span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
       .card {
         padding: 18px;
       }
@@ -241,6 +281,11 @@
         border-block: 1px solid #e4e8dd;
         background: var(--soft);
       }
+      .compare {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
       .cta {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -267,6 +312,8 @@
       @media (max-width: 820px) {
         .hero,
         .grid,
+        .steps,
+        .compare,
         .cta {
           grid-template-columns: 1fr;
         }
@@ -314,6 +361,21 @@
             <li>10 个 30 天内容方向种子</li>
           </ul>
         </aside>
+      </section>
+
+      <section class="band">
+        <div class="shell">
+          <div class="section-title">
+            <h2>怎么试用这份样品</h2>
+            <p>3 分钟就能判断它有没有用，不需要注册，也不需要联系任何人。</p>
+          </div>
+          <div class="steps">
+            <article class="step"><strong>下载 CSV</strong><span>用表格打开，先看公式和提示词结构。</span></article>
+            <article class="step"><strong>替换变量</strong><span>把【行业】【人群】【痛点】换成自己的真实信息。</span></article>
+            <article class="step"><strong>放进生成器</strong><span>复制到标题工厂免费工具，生成更多版本。</span></article>
+            <article class="step"><strong>决定是否升级</strong><span>如果需要更多行业和场景，再看完整模板包。</span></article>
+          </div>
+        </div>
       </section>
 
       <section class="shell">
@@ -369,7 +431,7 @@
           <h2>免费版和付费版区别</h2>
           <p>免费样品负责试用，付费模板包负责批量复用和被动交付。</p>
         </div>
-        <div class="grid">
+        <div class="compare">
           <article class="card">
             <h3>免费样品包</h3>
             <ul>
@@ -386,13 +448,26 @@
               <li>25 个行业分类</li>
             </ul>
           </article>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
+          <h2>样品包之后做什么</h2>
+          <p>最短路径是：先用免费样品验证手感，再用完整包批量生产内容第一稿。</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>做选题库</h3>
+            <p>把标题公式变成自己的 20 个选题，后续每周复用。</p>
+          </article>
+          <article class="card">
+            <h3>做内容日历</h3>
+            <p>把 30 天方向扩写成每天要发的标题、正文和结尾引导。</p>
+          </article>
           <article class="card">
             <h3>配合生成器</h3>
-            <ul>
-              <li>先用模板确定方向</li>
-              <li>再用标题工厂改写</li>
-              <li>最后导出 Markdown / CSV</li>
-            </ul>
+            <p>复制样品模板到免费工具里改写，一次生成多个版本再筛选。</p>
           </article>
         </div>
       </section>
@@ -411,5 +486,16 @@
     <footer>
       <div class="shell">标题工厂 · 用免费样品建立信任，用付费模板包完成被动交付。</div>
     </footer>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "标题工厂免费样品包",
+        "description": "包含小红书标题公式、短视频开头、商品标题结构、AI 提示词和 30 天内容方向的免费模板样品。",
+        "isAccessibleForFree": true,
+        "url": "https://xingchengu6-collab.github.io/downloads/title-factory-starter-pack.html",
+        "provider": { "@type": "Organization", "name": "标题工厂" }
+      }
+    </script>
   </body>
 </html>

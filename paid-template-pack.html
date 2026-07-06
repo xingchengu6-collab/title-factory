@@ -9,6 +9,13 @@
       content="标题工厂付费模板包，包含标题模板、短视频开头、朋友圈文案、商品标题、AI 提示词和 30 天内容日历，适合内容创作者、商家和 AI 工具运营者复用。"
     />
     <link rel="canonical" href="https://xingchengu6-collab.github.io/paid-template-pack.html" />
+    <meta property="og:title" content="标题工厂付费模板包 - 1000 条标题/文案/提示词素材库" />
+    <meta
+      property="og:description"
+      content="一次下载 Markdown、CSV 和使用说明，覆盖小红书、短视频、商品页、朋友圈和 AI 提示词。"
+    />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://xingchengu6-collab.github.io/paid-template-pack.html" />
     <style>
       :root {
         --ink: #151515;
@@ -204,6 +211,32 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
       }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 18px;
+      }
+      .metric strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 30px;
+        line-height: 1;
+      }
+      .metric span {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
       .card {
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -218,6 +251,27 @@
         margin: 0;
         color: var(--muted);
         line-height: 1.75;
+      }
+      .card ul {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .card li {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .card li::before {
+        content: "✓";
+        margin-right: 8px;
+        color: var(--green);
+        font-weight: 900;
+      }
+      .card.warning li::before {
+        content: "·";
+        color: var(--gold);
       }
       .band {
         background: var(--soft);
@@ -305,6 +359,25 @@
         line-height: 1.6;
         margin-top: 10px;
       }
+      .faq {
+        display: grid;
+        gap: 10px;
+      }
+      details {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 16px 18px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 850;
+      }
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
       footer {
         border-top: 1px solid var(--line);
         color: var(--muted);
@@ -313,6 +386,8 @@
       @media (max-width: 860px) {
         .hero,
         .grid,
+        .metrics,
+        .two-col,
         .steps,
         .checkout {
           grid-template-columns: 1fr;
@@ -365,6 +440,15 @@
         </aside>
       </section>
 
+      <section class="shell" aria-label="模板包数据">
+        <div class="metrics">
+          <div class="metric"><strong>1000+</strong><span>标题、文案、开头和提示词模板</span></div>
+          <div class="metric"><strong>750</strong><span>30 天内容日历方向</span></div>
+          <div class="metric"><strong>25</strong><span>行业分类，方便筛选复用</span></div>
+          <div class="metric"><strong>3</strong><span>Markdown、CSV、使用说明</span></div>
+        </div>
+      </section>
+
       <section class="shell">
         <div class="section-title">
           <h2>交付内容</h2>
@@ -382,6 +466,33 @@
           <article class="card">
             <h3>AI 提示词库</h3>
             <p>把“我要什么内容”变成结构化提示词，适合配合 ChatGPT、豆包、Kimi、通义等工具使用。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
+          <h2>适合和不适合</h2>
+          <p>把购买预期讲清楚，可以减少犹豫，也减少后续人工解释。</p>
+        </div>
+        <div class="two-col">
+          <article class="card">
+            <h3>适合这些人</h3>
+            <ul>
+              <li>每天要写小红书、短视频、朋友圈或商品页内容</li>
+              <li>想用 AI 写内容，但不知道怎么提问</li>
+              <li>需要一份可长期复用的标题和文案素材库</li>
+              <li>希望下载后自己复制、筛选、改写，不需要人工服务</li>
+            </ul>
+          </article>
+          <article class="card warning">
+            <h3>不适合这些情况</h3>
+            <ul>
+              <li>想要代运营、代写或一对一咨询</li>
+              <li>希望购买后保证涨粉、成交或排名</li>
+              <li>完全不愿意替换行业、人群、产品和痛点变量</li>
+              <li>需要医疗、法律、金融等高风险内容的最终合规审核</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -447,6 +558,31 @@
         </div>
       </section>
 
+      <section class="shell">
+        <div class="section-title">
+          <h2>常见问题</h2>
+          <p>购买前最容易卡住的点，先在页面里讲清楚。</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>这是课程还是模板？</summary>
+            <p>这是可下载模板包，不是课程。核心价值是让你少从空白页开始，直接拿标题结构、文案结构和提示词去改写。</p>
+          </details>
+          <details>
+            <summary>购买后怎么交付？</summary>
+            <p>审核通过并接入购买入口后，用户在平台完成付款，即可自动下载压缩包，里面包含 Markdown、CSV 和使用说明。</p>
+          </details>
+          <details>
+            <summary>能不能直接复制发布？</summary>
+            <p>可以复制，但更建议替换成自己的行业、人群、产品和真实痛点。模板适合作为第一稿，不建议完全不改就发布。</p>
+          </details>
+          <details>
+            <summary>能保证涨粉或成交吗？</summary>
+            <p>不能保证。它解决的是内容表达和生产效率问题，最终效果还会受产品、账号、渠道、发布频率和用户需求影响。</p>
+          </details>
+        </div>
+      </section>
+
       <section class="shell" id="buy">
         <div class="checkout">
           <div>
@@ -471,6 +607,50 @@
         buyButton.textContent = "立即购买";
         buyButton.target = "_blank";
         buyButton.rel = "noreferrer";
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "标题工厂付费模板包",
+        "description": "1000 条标题、文案、短视频开头、商品页标题和 AI 提示词模板，包含 Markdown、CSV 和使用说明。",
+        "brand": { "@type": "Brand", "name": "标题工厂" },
+        "offers": {
+          "@type": "Offer",
+          "price": "99",
+          "priceCurrency": "CNY",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://xingchengu6-collab.github.io/paid-template-pack.html"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "这是课程还是模板？",
+            "acceptedAnswer": { "@type": "Answer", "text": "这是可下载模板包，不是课程。核心价值是让用户直接拿标题结构、文案结构和提示词去改写。" }
+          },
+          {
+            "@type": "Question",
+            "name": "购买后怎么交付？",
+            "acceptedAnswer": { "@type": "Answer", "text": "审核通过并接入购买入口后，用户在平台完成付款，即可自动下载包含 Markdown、CSV 和使用说明的压缩包。" }
+          },
+          {
+            "@type": "Question",
+            "name": "能不能直接复制发布？",
+            "acceptedAnswer": { "@type": "Answer", "text": "可以复制，但更建议替换成自己的行业、人群、产品和真实痛点。模板适合作为第一稿。" }
+          },
+          {
+            "@type": "Question",
+            "name": "能保证涨粉或成交吗？",
+            "acceptedAnswer": { "@type": "Answer", "text": "不能保证。模板解决的是内容表达和生产效率问题，最终效果还会受产品、账号、渠道和用户需求影响。" }
+          }
+        ]
       }
     </script>
   </body>
