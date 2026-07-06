@@ -415,7 +415,7 @@ function renderSolutionPage(solution) {
           <h1>${escapeHtml(solution.title)}</h1>
           <p class="lead">${escapeHtml(description)}</p>
           <div class="actions">
-            <a class="primary" href="../${escapeHtml(solution.toolHref)}">先用免费工具</a>
+            <a class="primary" href="../${escapeHtml(solution.toolHref)}">${escapeHtml(solution.primaryLabel || "先用免费工具")}</a>
             <a class="secondary" href="../${escapeHtml(solution.packHref)}">查看对应模板包</a>
           </div>
         </div>

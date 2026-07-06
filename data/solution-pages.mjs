@@ -72,6 +72,7 @@ export const solutionPages = [
     audience: "模板产品创作者、课程作者、咨询顾问和独立创作者",
     pain: "产品明明有价值，但页面只像目录，用户不知道买完能解决什么。",
     outcome: "用适合谁、不适合谁、交付内容、使用步骤、FAQ 和购买入口提高信任。",
+    primaryLabel: "查看付费包页面",
     toolHref: "paid-template-pack.html",
     packHref: "packs/knowledge-product-sales-page-template-pack.html",
     examples: ["买完 30 分钟内怎么开始用", "这套产品适合谁，不适合谁", "不是课程，而是可下载的执行模板"],
