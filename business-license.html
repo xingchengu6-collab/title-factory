@@ -178,6 +178,27 @@
       .matrix-row strong, .matrix-row span { padding: 14px 16px; }
       .matrix-row strong { background: #f7f7f7; }
       .matrix-row span { color: var(--muted); line-height: 1.65; }
+      .metric {
+        display: grid;
+        gap: 6px;
+      }
+      .metric strong {
+        color: var(--green);
+        font-size: 28px;
+        line-height: 1.1;
+      }
+      .file-list {
+        display: grid;
+        gap: 10px;
+      }
+      .file-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 14px 16px;
+      }
+      .file-item strong { display: block; margin-bottom: 5px; }
+      .file-item span { color: var(--muted); line-height: 1.6; }
       .checkout {
         border: 1px solid #d6c09d;
         border-radius: 8px;
@@ -284,6 +305,30 @@
 
       <section class="shell">
         <div class="section-title">
+          <h2>999 元怎么判断值不值</h2>
+          <p>这不是承诺赚钱，而是把团队反复从零想标题、写方案、搭销售页的时间，变成可复用的内部资产。</p>
+        </div>
+        <div class="grid">
+          <article class="card metric">
+            <strong>1 次</strong>
+            <h3>客户项目打样</h3>
+            <p>用模板先做标题方向、短视频开头、私域文案和销售页结构，适合项目前期快速出第一版。</p>
+          </article>
+          <article class="card metric">
+            <strong>25 个</strong>
+            <h3>行业可复用入口</h3>
+            <p>不是只给一个行业用，团队可以按客户类型筛选模板，再改成真实产品和平台语气。</p>
+          </article>
+          <article class="card metric">
+            <strong>0 人工</strong>
+            <h3>数字交付</h3>
+            <p>授权、SOP、客户项目流程和完整模板包都在压缩包内，减少反复解释和单独交付。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
           <h2>适合和不适合</h2>
           <p>高价产品更需要让用户自己筛选，避免不匹配购买。</p>
         </div>
@@ -326,6 +371,47 @@
           <article class="card">
             <h3>授权边界说明</h3>
             <p>明确团队内部复用、客户项目使用、禁止二次转售和不包含人工服务的边界。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="shell">
+          <div class="section-title">
+            <h2>交付文件清单</h2>
+            <p>购买后交付的是一个商业授权压缩包，买家可以直接下载、保存和放进团队知识库。</p>
+          </div>
+          <div class="file-list">
+            <div class="file-item"><strong>title-factory-paid-template-pack-v1.zip</strong><span>完整模板包，包含行业模板、标题、文案、提示词和内容日历素材。</span></div>
+            <div class="file-item"><strong>commercial-license-terms.md</strong><span>商业授权边界，说明可以用于团队内部和客户项目打样，但不能二次转售原始模板。</span></div>
+            <div class="file-item"><strong>team-sop.md</strong><span>团队内部复用 SOP，方便导入飞书、Notion、语雀或内部知识库。</span></div>
+            <div class="file-item"><strong>client-project-workflow.md</strong><span>客户项目打样流程，用于项目前期快速整理标题方向、开头、私域文案和销售页结构。</span></div>
+            <div class="file-item"><strong>README.md</strong><span>买家阅读说明，告诉团队先看什么、怎么用、哪些事情不包含。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
+          <h2>常见问题</h2>
+          <p>把高价购买前最容易卡住的问题提前讲清楚，减少人工沟通。</p>
+        </div>
+        <div class="two-col">
+          <article class="card">
+            <h3>可以给客户项目用吗？</h3>
+            <p>可以。授权允许在客户项目中使用模板结构，产出改写后的标题、文案、脚本方向和销售页初稿。</p>
+          </article>
+          <article class="card">
+            <h3>可以买来再转卖吗？</h3>
+            <p>不可以。不能把原始模板、压缩包或授权文件改名后售卖，也不能公开上传供他人下载。</p>
+          </article>
+          <article class="card">
+            <h3>包含代写或咨询吗？</h3>
+            <p>不包含。商业授权是数字产品授权，不包含代运营、代写、一对一咨询、账号诊断或效果保证。</p>
+          </article>
+          <article class="card">
+            <h3>个人用户需要买吗？</h3>
+            <p>多数个人用户先买 ¥99 完整包就够了。商业授权更适合团队复用、工作室交付和客户项目打样。</p>
           </article>
         </div>
       </section>

@@ -94,7 +94,7 @@ for (const needle of ["适合和不适合", "交付预览", "购买决策清单"
 }
 
 const businessLicense = await readFile("business-license.html", "utf8");
-for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "Product", "PreOrder"]) {
+for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "999 元怎么判断值不值", "交付文件清单", "常见问题", "Product", "PreOrder"]) {
   if (businessLicense.includes(needle)) pass(`business license page contains ${needle}`);
   else fail(`business license page contains ${needle}`, "missing");
 }
