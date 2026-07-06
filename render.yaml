@@ -23,3 +23,5 @@ services:
         sync: false
       - key: BUSINESS_LICENSE_URL
         sync: false
+      - key: PURCHASE_INTENT_URL
+        sync: false

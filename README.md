@@ -22,6 +22,7 @@
 - 部署说明：`DEPLOY.md`
 - 运营计划：`OPERATING_PLAN.md`
 - 收钱配置清单：`MONEY_SETUP.md`
+- 购买意向表单设置：`LEAD_FORM_SETUP.md`
 - 发布说明：`RELEASE_NOTES.md`
 
 ## 本地运行
@@ -71,9 +72,10 @@ http://localhost:4173/healthz
 TEMPLATE_PACK_URL=https://你的模板包购买链接
 PRO_CHECKOUT_URL=https://你的 Pro 购买链接
 BUSINESS_LICENSE_URL=https://你的商业授权购买链接
+PURCHASE_INTENT_URL=https://你的购买意向表单链接
 ```
 
-如果只部署在 GitHub Pages 这种静态站，也可以直接填写根目录的 `checkout-config.json`。页面会读取 `checkout-config.json` 和 `/api/config`；部署平台环境变量有值时优先生效。
+如果只部署在 GitHub Pages 这种静态站，也可以直接填写根目录的 `checkout-config.json`。页面会读取 `checkout-config.json` 和 `/api/config`；部署平台环境变量有值时优先生效。`purchaseIntentUrl` 可以填写飞书表单、金数据、腾讯问卷或 Tally 链接，用来被动收集购买意向。
 
 等待名单只是早期验证用，真正上线后可以迁到邮件服务、数据库或支付平台。
 

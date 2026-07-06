@@ -21,6 +21,7 @@ const requiredFiles = [
   "data/events.csv",
   "data/waitlist.csv",
   "DEPLOY.md",
+  "LEAD_FORM_SETUP.md",
   "MONEY_SETUP.md",
   "OPERATING_PLAN.md",
   "RELEASE_NOTES.md",
@@ -77,7 +78,7 @@ if (sitemapEntries === 169) pass("sitemap entry count", "169 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "business-license.html", "businessLicenseCta", "checkout-config.json", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "business-license.html", "businessLicenseCta", "checkout-config.json", "purchaseIntentUrl", "waitlistCopy", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -101,7 +102,7 @@ for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "�
 }
 
 const checkoutConfig = JSON.parse(await readFile("checkout-config.json", "utf8"));
-for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl"]) {
+for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl", "purchaseIntentUrl"]) {
   if (Object.hasOwn(checkoutConfig, key)) pass(`checkout config contains ${key}`);
   else fail(`checkout config contains ${key}`, "missing");
 }
@@ -113,19 +114,25 @@ for (const needle of ["title-factory-business-license-v1.zip", "commercial-licen
 }
 
 const moneySetup = await readFile("MONEY_SETUP.md", "utf8");
-for (const needle of ["BUSINESS_LICENSE_URL", "title-factory-business-license-v1.zip", "标题工厂商业授权版：团队内容模板和客户项目打样授权", "价格：999 元"]) {
+for (const needle of ["BUSINESS_LICENSE_URL", "PURCHASE_INTENT_URL", "purchaseIntentUrl", "title-factory-business-license-v1.zip", "标题工厂商业授权版：团队内容模板和客户项目打样授权", "价格：999 元"]) {
   if (moneySetup.includes(needle)) pass(`money setup contains ${needle}`);
   else fail(`money setup contains ${needle}`, "missing");
 }
 
+const leadFormSetup = await readFile("LEAD_FORM_SETUP.md", "utf8");
+for (const needle of ["购买意向表单", "purchaseIntentUrl", "¥99 标题工厂付费模板包", "¥999 商业授权版"]) {
+  if (leadFormSetup.includes(needle)) pass(`lead form setup contains ${needle}`);
+  else fail(`lead form setup contains ${needle}`, "missing");
+}
+
 const server = await readFile("server.mjs", "utf8");
-for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl"]) {
+for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl", "PURCHASE_INTENT_URL", "purchaseIntentUrl"]) {
   if (server.includes(needle)) pass(`server config contains ${needle}`);
   else fail(`server config contains ${needle}`, "missing");
 }
 
 const netlifyApi = await readFile("netlify/functions/api.mjs", "utf8");
-for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl"]) {
+for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl", "PURCHASE_INTENT_URL", "purchaseIntentUrl"]) {
   if (netlifyApi.includes(needle)) pass(`netlify api contains ${needle}`);
   else fail(`netlify api contains ${needle}`, "missing");
 }
@@ -133,6 +140,8 @@ for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl"]) {
 const envExample = await readFile(".env.example", "utf8");
 if (envExample.includes("BUSINESS_LICENSE_URL=")) pass("env example contains BUSINESS_LICENSE_URL");
 else fail("env example contains BUSINESS_LICENSE_URL", "missing");
+if (envExample.includes("PURCHASE_INTENT_URL=")) pass("env example contains PURCHASE_INTENT_URL");
+else fail("env example contains PURCHASE_INTENT_URL", "missing");
 
 const starterPackPage = await readFile("downloads/title-factory-starter-pack.html", "utf8");
 for (const needle of ["怎么试用这份样品", "样品包之后做什么", "application/ld+json"]) {

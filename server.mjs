@@ -11,6 +11,7 @@ const aiModel = process.env.AI_MODEL || "gpt-4o-mini";
 const templatePackUrl = process.env.TEMPLATE_PACK_URL || "";
 const proCheckoutUrl = process.env.PRO_CHECKOUT_URL || "";
 const businessLicenseUrl = process.env.BUSINESS_LICENSE_URL || "";
+const purchaseIntentUrl = process.env.PURCHASE_INTENT_URL || "";
 const maxBodyBytes = 64 * 1024;
 
 const mimeTypes = {
@@ -289,6 +290,7 @@ function handleConfig(req, res) {
     templatePackUrl,
     proCheckoutUrl,
     businessLicenseUrl,
+    purchaseIntentUrl,
   });
 }
 

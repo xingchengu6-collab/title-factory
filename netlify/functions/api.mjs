@@ -4,6 +4,7 @@ const aiModel = process.env.AI_MODEL || "gpt-4o-mini";
 const templatePackUrl = process.env.TEMPLATE_PACK_URL || "";
 const proCheckoutUrl = process.env.PRO_CHECKOUT_URL || "";
 const businessLicenseUrl = process.env.BUSINESS_LICENSE_URL || "";
+const purchaseIntentUrl = process.env.PURCHASE_INTENT_URL || "";
 
 const jsonHeaders = {
   "content-type": "application/json; charset=utf-8",
@@ -187,7 +188,7 @@ export async function handler(event) {
   }
 
   if (event.httpMethod === "GET" && route === "/config") {
-    return json(200, { templatePackUrl, proCheckoutUrl, businessLicenseUrl });
+    return json(200, { templatePackUrl, proCheckoutUrl, businessLicenseUrl, purchaseIntentUrl });
   }
 
   if (event.httpMethod === "GET" && route === "/stats") {

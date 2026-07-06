@@ -33,6 +33,7 @@ AI_API_KEY=你的 AI 密钥
 TEMPLATE_PACK_URL=模板包购买链接
 PRO_CHECKOUT_URL=Pro 购买或订阅链接
 BUSINESS_LICENSE_URL=商业授权购买链接
+PURCHASE_INTENT_URL=购买意向表单链接
 ```
 
 GitHub Pages 静态站可以改 `checkout-config.json` 来配置购买链接。

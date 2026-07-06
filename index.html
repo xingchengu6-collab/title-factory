@@ -947,7 +947,7 @@
           </article>
           <article class="waitlist">
             <h3>保存购买意向</h3>
-            <p>自动购买入口接入中。先留下邮箱，本页面会在本机保存这条意向；等购买链接上线后，再回到这里即可继续。</p>
+            <p id="waitlistCopy">自动购买入口接入中。先留下邮箱，本页面会在本机保存这条意向；等购买链接上线后，再回到这里即可继续。</p>
             <form class="waitlist-form" id="waitlistForm">
               <label class="sr-only" for="waitlistEmail">邮箱</label>
               <input id="waitlistEmail" name="email" type="email" placeholder="you@example.com" required />
@@ -1135,9 +1135,11 @@
       const waitlistEmail = document.querySelector("#waitlistEmail");
       const waitlistButton = document.querySelector("#waitlistButton");
       const waitlistNote = document.querySelector("#waitlistNote");
+      const waitlistCopy = document.querySelector("#waitlistCopy");
       const templatePackCta = document.querySelector("#templatePackCta");
       const businessLicenseCta = document.querySelector("#businessLicenseCta");
       const proCta = document.querySelector("#proCta");
+      let checkoutConfig = {};
       let currentMode = "xhs";
 
       function track(name, extra = {}) {
@@ -1293,7 +1295,7 @@
             const response = await fetch(source, { cache: "no-store" });
             if (!response.ok) continue;
             const data = await response.json();
-            for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl"]) {
+            for (const key of ["templatePackUrl", "proCheckoutUrl", "businessLicenseUrl", "purchaseIntentUrl"]) {
               if (data[key]) config[key] = data[key];
             }
           } catch {
@@ -1305,6 +1307,7 @@
 
       async function applyCommercialConfig() {
         const config = await readCheckoutConfig();
+        checkoutConfig = config;
         if (config.templatePackUrl) {
           templatePackCta.href = config.templatePackUrl;
           templatePackCta.target = "_blank";
@@ -1320,6 +1323,18 @@
           businessLicenseCta.target = "_blank";
           businessLicenseCta.rel = "noreferrer";
         }
+        if (config.purchaseIntentUrl) {
+          waitlistCopy.textContent = "自动购买入口接入中。留下邮箱后会打开购买意向表单，提交后信息会进入后台表格，后续购买链接上线时可以被动通知。";
+          waitlistButton.textContent = "提交购买意向";
+        }
+      }
+
+      function intentUrlWithEmail(email) {
+        const url = new URL(checkoutConfig.purchaseIntentUrl, window.location.href);
+        url.searchParams.set("email", email);
+        url.searchParams.set("source", "homepage-pro-waitlist");
+        url.searchParams.set("page", window.location.pathname || "/");
+        return url.toString();
       }
 
       tabs.forEach((tab) => {
@@ -1372,6 +1387,23 @@
         waitlistButton.textContent = "提交中...";
         waitlistNote.textContent = "";
         const email = waitlistEmail.value.trim();
+
+        if (checkoutConfig.purchaseIntentUrl) {
+          try {
+            const intentUrl = intentUrlWithEmail(email);
+            window.open(intentUrl, "_blank", "noopener,noreferrer");
+            waitlistForm.reset();
+            waitlistNote.textContent = "已打开购买意向表单。提交后会进入后台表格。";
+            track("purchase-intent-click", { source: checkoutConfig.purchaseIntentUrl });
+            showToast("已打开表单");
+          } catch {
+            waitlistNote.textContent = "购买意向表单暂时不可用，请先查看免费样品包。";
+          } finally {
+            waitlistButton.disabled = false;
+            waitlistButton.textContent = "提交购买意向";
+          }
+          return;
+        }
 
         function saveLocalIntent() {
           const saved = JSON.parse(localStorage.getItem("titleFactoryPurchaseIntents") || "[]");
