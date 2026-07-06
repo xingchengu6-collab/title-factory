@@ -9,8 +9,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 4173
       - key: SITE_URL
         sync: false
       - key: AI_API_KEY
