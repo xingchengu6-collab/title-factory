@@ -42,6 +42,10 @@ function rootHref(path) {
   return path.startsWith("http") ? path : `../${path}`;
 }
 
+function formatAudience(value) {
+  return /^[A-Za-z0-9]/.test(value) ? ` ${value}` : value;
+}
+
 function renderPackJsonLd(pack, description) {
   return JSON.stringify(
     [
@@ -69,7 +73,7 @@ function renderPackJsonLd(pack, description) {
             name: `${pack.title}适合谁？`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `适合 ${pack.audience}，尤其适合已经有产品或内容方向，但卡在标题、开头、销售页和 AI 提示词表达的人。`,
+              text: `适合${formatAudience(pack.audience)}，尤其适合已经有产品或内容方向，但卡在标题、开头、销售页和 AI 提示词表达的人。`,
             },
           },
           {
@@ -97,7 +101,7 @@ function renderPackJsonLd(pack, description) {
 }
 
 function renderIndustryPackPage(pack) {
-  const description = `${pack.title}，适合 ${pack.audience}，用于复用标题、文案、销售页和 AI 提示词结构。先试免费工具和样品包，再进入完整付费模板包。`;
+  const description = `${pack.title}，适合${formatAudience(pack.audience)}，用于复用标题、文案、销售页和 AI 提示词结构。先试免费工具和样品包，再进入完整付费模板包。`;
   const examples = pack.examples
     .map((example, index) => `<li><span>${index + 1}</span>${escapeHtml(example)}</li>`)
     .join("");
