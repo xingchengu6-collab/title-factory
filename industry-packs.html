@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>行业模板包 - 25 个行业标题、文案和 AI 提示词入口</title>
+    <meta
+      name="description"
+      content="标题工厂行业模板包入口，覆盖 AI 工具、电商、本地生活、教育、健身、装修、B2B、SaaS 等 25 个行业的标题、文案和提示词方向。"
+    />
+    <link rel="canonical" href="https://xingchengu6-collab.github.io/industry-packs.html" />
+    <meta property="og:title" content="标题工厂行业模板包 - 25 个行业内容模板入口" />
+    <meta
+      property="og:description"
+      content="按行业选择标题、文案、短视频开头和 AI 提示词模板，先试公开样例，再进入完整付费包。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://xingchengu6-collab.github.io/industry-packs.html" />
+    <style>
+      :root {
+        --ink: #171717;
+        --muted: #60646b;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --soft: #f4f8f5;
+        --mint: #e9f7ef;
+        --green: #14785f;
+        --gold: #a66a12;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        background: #fff;
+      }
+      a {
+        color: inherit;
+      }
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+      }
+      nav {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 850;
+      }
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--ink);
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 34px;
+        align-items: center;
+        padding: 56px 0 32px;
+      }
+      .kicker {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid #b8d8ca;
+        color: #0f624f;
+        background: #effaf5;
+        border-radius: 999px;
+        padding: 7px 11px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(38px, 6vw, 64px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      .lead {
+        max-width: 700px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .primary,
+      .secondary {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 11px 15px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .primary {
+        color: #fff;
+        background: var(--ink);
+        border: 1px solid var(--ink);
+      }
+      .secondary {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .summary {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+        padding: 22px;
+      }
+      .summary strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 34px;
+        line-height: 1;
+      }
+      .summary p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+      }
+      .metric b {
+        display: block;
+        margin-bottom: 5px;
+      }
+      section {
+        padding: 28px 0;
+      }
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 40px);
+        letter-spacing: 0;
+      }
+      .section-title p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .pack-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .pack-card {
+        display: grid;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 18px;
+      }
+      .tagline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .tag {
+        width: fit-content;
+        border-radius: 999px;
+        color: #0f624f;
+        background: var(--mint);
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .tag.gold {
+        color: var(--gold);
+        background: #fff7e3;
+      }
+      .pack-card h3 {
+        margin: 0;
+        font-size: 19px;
+      }
+      .pack-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .pack-card a {
+        width: fit-content;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 850;
+      }
+      .band {
+        border-block: 1px solid #e4e8dd;
+        background: var(--soft);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: step;
+      }
+      .step {
+        border: 1px solid #dfe4d8;
+        border-radius: 8px;
+        background: #fff;
+        padding: 18px;
+        counter-increment: step;
+      }
+      .step::before {
+        content: counter(step);
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--green);
+        font-weight: 900;
+      }
+      .step strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .step span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .cta {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 18px;
+        border: 1px solid #d6c09d;
+        border-radius: 8px;
+        background: #fffaf0;
+        padding: 22px;
+      }
+      .cta h2 {
+        margin: 0 0 8px;
+      }
+      .cta p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        padding: 28px 0 40px;
+      }
+      @media (max-width: 900px) {
+        .hero,
+        .metrics,
+        .pack-grid,
+        .steps,
+        .cta {
+          grid-template-columns: 1fr;
+        }
+        .section-title {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <div class="nav-links">
+          <a href="template-library.html">模板库</a>
+          <a href="index.html#tool">免费生成器</a>
+          <a href="downloads/title-factory-starter-pack.html">免费样品包</a>
+          <a href="paid-template-pack.html">付费模板包</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">行业入口 · 被动搜索 · 可扩展产品矩阵</span>
+          <h1>25 个行业模板包入口。</h1>
+          <p class="lead">
+            不同人搜索的不是“通用文案”，而是“装修朋友圈文案”“AI 工具标题模板”“电商商品标题优化”。这页把 25 个行业拆成入口，承接更具体的搜索需求。
+          </p>
+          <div class="actions">
+            <a class="primary" href="#packs">选择行业</a>
+            <a class="secondary" href="paid-template-pack.html">查看完整付费包</a>
+          </div>
+        </div>
+        <aside class="summary">
+          <strong>25</strong>
+          <p>行业方向已经打包进完整模板库，适合后续继续拆成行业专属高价包。</p>
+          <div class="metrics">
+            <div class="metric"><b>1000+</b><span>标题/文案/提示词</span></div>
+            <div class="metric"><b>750</b><span>内容日历方向</span></div>
+            <div class="metric"><b>¥99</b><span>首版完整包</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="shell" id="packs">
+        <div class="section-title">
+          <h2>选择你的行业</h2>
+          <p>每个行业都可以继续扩成独立模板包。现在先用公开入口承接搜索，再导向完整付费包。</p>
+        </div>
+        <div class="pack-grid">
+          <article class="pack-card"><div class="tagline"><span class="tag">AI 工具</span><span class="tag gold">高潜</span></div><h3>AI 工具内容模板包</h3><p>适合工具创作者、AI 教程博主和独立开发者，把功能写成具体使用场景。</p><a href="tools/ai-tools-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">电商</span><span class="tag gold">商品标题</span></div><h3>电商商品标题模板包</h3><p>适合淘宝、抖店、拼多多商家，把人群、场景、卖点和结果写进标题。</p><a href="tools/ecommerce-product-title-optimizer.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">本地生活</span><span class="tag gold">门店</span></div><h3>本地生活获客文案包</h3><p>适合门店老板、家政维修和本地服务，让活动内容更像真实到店理由。</p><a href="tools/local-service-moments-copy-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">教育培训</span></div><h3>教育培训标题文案包</h3><p>适合老师和课程顾问，把课程卖点写得更可信、更具体。</p><a href="tools/education-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">健身健康</span></div><h3>健身健康内容模板包</h3><p>适合私教和健康管理师，把专业内容改成普通用户能理解的场景。</p><a href="tools/fitness-video-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">家居装修</span></div><h3>装修避坑文案包</h3><p>适合装修公司和设计师，围绕预算、避坑、案例和信任感做内容。</p><a href="tools/renovation-moments-copy-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">自由职业</span></div><h3>自由职业获客模板包</h3><p>适合设计师、剪辑师、顾问，把服务价值写得更清楚。</p><a href="tools/freelancer-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">B2B 服务</span></div><h3>B2B 销售朋友圈文案包</h3><p>适合企业服务销售和运营，把复杂方案拆成客户能理解的问题。</p><a href="tools/b2b-moments-copy-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">餐饮</span></div><h3>餐饮探店内容模板包</h3><p>适合餐饮店主和探店账号，把菜品、套餐和到店理由写出记忆点。</p><a href="tools/restaurant-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">美业</span></div><h3>美业小红书标题包</h3><p>适合美甲、美睫、皮肤管理门店，减少只拼低价的表达。</p><a href="tools/beauty-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">宠物</span></div><h3>宠物服务内容模板包</h3><p>适合宠物店和宠物用品商家，讲清产品适合什么养宠场景。</p><a href="tools/pet-video-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">摄影</span></div><h3>摄影约拍文案包</h3><p>适合摄影师和写真工作室，把作品价值、套餐价值和拍摄体验讲清楚。</p><a href="tools/photography-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">房产</span></div><h3>房产销售内容模板包</h3><p>适合房产顾问和本地置业号，把硬信息写成用户愿意看的内容。</p><a href="tools/real-estate-moments-copy-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">留学</span></div><h3>留学内容标题模板包</h3><p>适合留学顾问和语言培训，降低焦虑表达，给出清晰路径。</p><a href="tools/study-abroad-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">法律</span></div><h3>法律服务科普文案包</h3><p>适合律师和法律服务号，把专业内容写得更有距离感控制和可理解度。</p><a href="tools/legal-moments-copy-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">财商</span></div><h3>财商科普标题包</h3><p>适合财商教育和记账工具，用更稳健的方式讲预算、储蓄和风险。</p><a href="tools/finance-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">旅游</span></div><h3>旅游攻略内容模板包</h3><p>适合旅行规划师和本地攻略号，把路线、预算和避坑写得更具体。</p><a href="tools/travel-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">咖啡</span></div><h3>咖啡茶饮小红书模板包</h3><p>适合咖啡店和咖啡教学账号，让内容不仅好看，也能带来到店理由。</p><a href="tools/coffee-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">手作</span></div><h3>手作品牌商品标题包</h3><p>适合手作品牌和课程，把作品温度、礼物场景和价值表达稳定下来。</p><a href="tools/handmade-product-title-optimizer.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">游戏</span></div><h3>游戏内容短视频模板包</h3><p>适合游戏工具、攻略和教学，把热闹内容转成更强的关注理由。</p><a href="tools/gaming-video-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">职场</span></div><h3>职场求职标题模板包</h3><p>适合职业咨询和简历服务，把焦虑写成清晰、可执行的改变路径。</p><a href="tools/career-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">亲子</span></div><h3>亲子母婴内容模板包</h3><p>适合亲子教育和母婴产品，用更温和可信的表达降低家长顾虑。</p><a href="tools/parenting-xiaohongshu-title-generator.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">服饰</span></div><h3>服饰穿搭商品标题包</h3><p>适合服装店和穿搭账号，讲清适合谁、怎么搭、什么场景穿。</p><a href="tools/fashion-product-title-optimizer.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">SaaS</span><span class="tag gold">高潜</span></div><h3>SaaS 产品标题文案包</h3><p>适合 SaaS 创业者和市场运营，把功能很多的问题写成用户关心的结果。</p><a href="tools/saas-product-title-optimizer.html">打开行业工具</a></article>
+          <article class="pack-card"><div class="tagline"><span class="tag">知识产品</span><span class="tag gold">变现</span></div><h3>知识产品销售页模板包</h3><p>适合课程和模板产品创作者，把内容价值包装成更容易购买的表达。</p><a href="paid-template-pack.html">查看完整模板包</a></article>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="shell">
+          <div class="section-title">
+            <h2>为什么这有利于被动赚钱</h2>
+            <p>通用页面很难被精准搜索命中，行业入口能把需求切得更细。</p>
+          </div>
+          <div class="steps">
+            <article class="step"><strong>搜索更具体</strong><span>用户会搜“装修朋友圈文案”，而不是只搜“文案工具”。</span></article>
+            <article class="step"><strong>意图更强</strong><span>按行业来的用户更容易理解模板包适合自己。</span></article>
+            <article class="step"><strong>产品可拆分</strong><span>以后可以把高潜行业单独做成更高价模板包。</span></article>
+            <article class="step"><strong>自动承接</strong><span>每个入口都导向免费工具、样品包和完整付费包。</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="cta">
+          <div>
+            <h2>先用完整包，后续再拆行业高价包。</h2>
+            <p>当前完整包定价 ¥99，用来跑通第一批付费。等某些行业自然流量更高，再单独做行业深度包，提高客单价。</p>
+          </div>
+          <div class="actions">
+            <a class="primary" href="paid-template-pack.html">查看完整付费包</a>
+            <a class="secondary" href="template-library.html">先看公开模板</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">标题工厂 · 先用行业入口承接搜索，再用模板包完成被动交付。</div>
+    </footer>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "标题工厂行业模板包",
+        "description": "25 个行业标题、文案和 AI 提示词模板入口。",
+        "url": "https://xingchengu6-collab.github.io/industry-packs.html",
+        "isPartOf": { "@type": "WebSite", "name": "标题工厂", "url": "https://xingchengu6-collab.github.io/" }
+      }
+    </script>
+  </body>
+</html>

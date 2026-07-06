@@ -4,6 +4,7 @@ const requiredFiles = [
   "index.html",
   "ai-tools-workbench.html",
   "template-library.html",
+  "industry-packs.html",
   "paid-template-pack.html",
   "admin.html",
   "server.mjs",
@@ -59,11 +60,11 @@ else fail("SEO page count", `${tools.length} pages`);
 
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 129) pass("sitemap entry count", "129 entries");
+if (sitemapEntries === 130) pass("sitemap entry count", "130 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -90,6 +91,12 @@ const templateLibrary = await readFile("template-library.html", "utf8");
 for (const needle of ["公开模板库", "可复制模板样例", "CollectionPage", "title-factory-paid-pack-preview.png"]) {
   if (templateLibrary.includes(needle)) pass(`template library contains ${needle}`);
   else fail(`template library contains ${needle}`, "missing");
+}
+
+const industryPacks = await readFile("industry-packs.html", "utf8");
+for (const needle of ["25 个行业模板包入口", "AI 工具内容模板包", "知识产品销售页模板包", "CollectionPage"]) {
+  if (industryPacks.includes(needle)) pass(`industry packs page contains ${needle}`);
+  else fail(`industry packs page contains ${needle}`, "missing");
 }
 
 const events = await readFile("data/events.csv", "utf8");
