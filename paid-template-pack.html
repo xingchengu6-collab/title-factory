@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>标题工厂付费模板包 - ¥99 AI 内容获客素材库</title>
+    <meta
+      name="description"
+      content="标题工厂付费模板包，包含标题模板、短视频开头、朋友圈文案、商品标题、AI 提示词和 30 天内容日历，适合内容创作者、商家和 AI 工具运营者复用。"
+    />
+    <link rel="canonical" href="https://xingchengu6-collab.github.io/paid-template-pack.html" />
+    <style>
+      :root {
+        --ink: #151515;
+        --muted: #5f6268;
+        --line: #dcdcdc;
+        --paper: #ffffff;
+        --soft: #f6f8f3;
+        --green: #14785f;
+        --gold: #a66a12;
+        --blue: #234a8f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        background: #fff;
+      }
+      a {
+        color: inherit;
+      }
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        position: sticky;
+        top: 0;
+        z-index: 3;
+      }
+      nav {
+        min-height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 850;
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.05fr 0.8fr;
+        gap: 36px;
+        align-items: center;
+        padding: 56px 0 34px;
+      }
+      .kicker {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid #b8d8ca;
+        color: #0f624f;
+        background: #effaf5;
+        border-radius: 999px;
+        padding: 7px 11px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(38px, 6vw, 68px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      .lead {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+      .primary,
+      .secondary {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 11px 15px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .primary {
+        color: #fff;
+        background: var(--ink);
+        border: 1px solid var(--ink);
+      }
+      .secondary {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .offer-box {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #ffffff, #fafbf8);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+        padding: 22px;
+      }
+      .price {
+        display: flex;
+        align-items: end;
+        gap: 8px;
+        margin: 12px 0 16px;
+      }
+      .price strong {
+        font-size: 46px;
+        line-height: 1;
+      }
+      .price span {
+        color: var(--muted);
+        padding-bottom: 6px;
+      }
+      .list {
+        display: grid;
+        gap: 10px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .list li {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .list li::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        margin-top: 8px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+      section {
+        padding: 28px 0;
+      }
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: 0;
+      }
+      .section-title p {
+        max-width: 520px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 20px;
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .band {
+        background: var(--soft);
+        border-block: 1px solid #e4e8dd;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        counter-reset: step;
+      }
+      .step {
+        border: 1px solid #dfe4d8;
+        background: #fff;
+        border-radius: 8px;
+        padding: 18px;
+        counter-increment: step;
+      }
+      .step::before {
+        content: counter(step);
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 12px;
+        color: #fff;
+        background: var(--green);
+        border-radius: 8px;
+        font-weight: 900;
+      }
+      .step strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .step span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .sample {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .sample-row {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        border-top: 1px solid var(--line);
+      }
+      .sample-row:first-child {
+        border-top: 0;
+      }
+      .sample-row strong,
+      .sample-row span {
+        padding: 14px 16px;
+      }
+      .sample-row strong {
+        background: #f7f7f7;
+      }
+      .sample-row span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .checkout {
+        border: 1px solid #d6c09d;
+        background: #fffaf0;
+        border-radius: 8px;
+        padding: 22px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 44px;
+      }
+      .checkout h2 {
+        margin: 0 0 8px;
+      }
+      .checkout p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+        margin-top: 10px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        padding: 28px 0 40px;
+      }
+      @media (max-width: 860px) {
+        .hero,
+        .grid,
+        .steps,
+        .checkout {
+          grid-template-columns: 1fr;
+        }
+        .section-title {
+          display: block;
+        }
+        .sample-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <div class="nav-links">
+          <a href="index.html#tool">免费生成器</a>
+          <a href="ai-tools-workbench.html">AI 工具工作台</a>
+          <a href="downloads/title-factory-starter-pack.md">免费样品包</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">可下载数字产品 · 被动交付</span>
+          <h1>标题工厂付费模板包</h1>
+          <p class="lead">
+            一套面向小红书、短视频、商品页、朋友圈和 AI 提示词的内容获客素材库。适合想直接复制、改写、发布的人，也适合作为工具站的第一款付费产品。
+          </p>
+          <div class="actions">
+            <a class="primary" href="#buy">获取模板包</a>
+            <a class="secondary" href="downloads/ai-tools-paid-template-pack.md">查看样例</a>
+          </div>
+        </div>
+        <aside class="offer-box">
+          <span class="kicker">首版定价</span>
+          <div class="price"><strong>¥99</strong><span>一次买断</span></div>
+          <p class="lead">下载后可长期使用，适合个人账号、店铺运营、AI 工具推广和内容外包前期打样。</p>
+          <ul class="list">
+            <li>1000 条可改写标题与开头模板</li>
+            <li>25 个行业的内容方向和痛点表达</li>
+            <li>小红书、短视频、商品页、朋友圈四类场景</li>
+            <li>AI 提示词库和 30 天内容日历</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
+          <h2>交付内容</h2>
+          <p>不是空泛教程，而是能直接复制到生成器、笔记、短视频脚本和商品页里的素材。</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>标题与钩子库</h3>
+            <p>覆盖小红书标题、短视频前三秒、商品标题和朋友圈开头，方便直接替换行业、人群和产品。</p>
+          </article>
+          <article class="card">
+            <h3>行业表达模板</h3>
+            <p>按 AI 工具、电商、本地服务、教育、健身、装修等方向拆出高频痛点和内容角度。</p>
+          </article>
+          <article class="card">
+            <h3>AI 提示词库</h3>
+            <p>把“我要什么内容”变成结构化提示词，适合配合 ChatGPT、豆包、Kimi、通义等工具使用。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="shell">
+          <div class="section-title">
+            <h2>购买后怎么用</h2>
+            <p>交付方式按数字商品设计，不需要人工服务，也不依赖客户沟通。</p>
+          </div>
+          <div class="steps">
+            <article class="step"><strong>下载模板</strong><span>获得 Markdown / 表格版本，可保存到本地或导入笔记工具。</span></article>
+            <article class="step"><strong>选择场景</strong><span>按小红书、短视频、商品页、朋友圈或提示词选择对应模板。</span></article>
+            <article class="step"><strong>替换变量</strong><span>把行业、人群、产品、痛点换成自己的真实信息。</span></article>
+            <article class="step"><strong>批量生成</strong><span>复制到标题工厂或 AI 工具工作台，快速生成一组可发布内容。</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="section-title">
+          <h2>样例片段</h2>
+          <p>以下是付费包里的结构示例，实际包会扩展到更多行业和场景。</p>
+        </div>
+        <div class="sample">
+          <div class="sample-row">
+            <strong>小红书标题</strong>
+            <span>AI 工具没人点？先把“功能介绍”改成“具体使用场景”</span>
+          </div>
+          <div class="sample-row">
+            <strong>短视频开头</strong>
+            <span>如果你做了一个 AI 工具，但用户不知道什么时候用它，先看这 30 秒。</span>
+          </div>
+          <div class="sample-row">
+            <strong>朋友圈文案</strong>
+            <span>工具页不要急着讲功能，先让用户觉得“这个场景说的是我”。</span>
+          </div>
+          <div class="sample-row">
+            <strong>AI 提示词</strong>
+            <span>你是产品页文案顾问。请把“{产品}”拆成目标人群、核心痛点、功能卖点、行动按钮四部分。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell" id="buy">
+        <div class="checkout">
+          <div>
+            <h2>购买入口</h2>
+            <p>当前版本已经准备好上架。你可以使用面包多、小报童或爱发电创建数字商品，然后把商品链接接到这里。</p>
+            <div class="note">没有支付链接前，按钮会先打开样例包，避免用户点击空链接。</div>
+          </div>
+          <a class="primary" id="buyButton" href="downloads/ai-tools-paid-template-pack.md">查看付费包样例</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">标题工厂 · 免费工具吸引流量，模板包完成被动交付。</div>
+    </footer>
+
+    <script>
+      const checkoutUrl = "";
+      const buyButton = document.querySelector("#buyButton");
+      if (checkoutUrl) {
+        buyButton.href = checkoutUrl;
+        buyButton.textContent = "立即购买";
+        buyButton.target = "_blank";
+        buyButton.rel = "noreferrer";
+      }
+    </script>
+  </body>
+</html>

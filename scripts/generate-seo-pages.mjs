@@ -246,6 +246,11 @@ function renderSitemap() {
     <lastmod>${today}</lastmod>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>${baseUrl}/paid-template-pack.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.9</priority>
+  </url>
 ${seoPages
   .map(
     (page) => `  <url>

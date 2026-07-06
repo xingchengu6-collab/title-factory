@@ -3,6 +3,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 const requiredFiles = [
   "index.html",
   "ai-tools-workbench.html",
+  "paid-template-pack.html",
   "admin.html",
   "server.mjs",
   "sitemap.xml",
@@ -52,11 +53,11 @@ else fail("SEO page count", `${tools.length} pages`);
 
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 126) pass("sitemap entry count", "126 entries");
+if (sitemapEntries === 127) pass("sitemap entry count", "127 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "downloads/ai-tools-paid-template-pack.md", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "paid-template-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
