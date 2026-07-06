@@ -12,6 +12,7 @@ AI_API_KEY=你的 AI 密钥
 AI_MODEL=gpt-4o-mini
 TEMPLATE_PACK_URL=https://你的模板包购买链接
 PRO_CHECKOUT_URL=https://你的 Pro 订阅链接
+BUSINESS_LICENSE_URL=https://你的商业授权购买链接
 ```
 
 ## 模板包上架
@@ -78,6 +79,21 @@ private-delivery/title-factory-paid-template-pack-v1.zip
 - 品牌语气保存
 - Markdown / CSV 导出
 - 后续新增行业工作台
+
+## 商业授权页
+
+建议价格：
+
+```text
+¥999
+```
+
+商业授权适合：
+
+- 代运营团队内部复用模板体系
+- 工作室在客户项目里做内容打样
+- 企业内容运营沉淀标题、提示词和销售页 SOP
+- 不包含代运营、一对一咨询、二次转售或效果保证
 
 ## 上线后每天看什么
 

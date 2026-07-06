@@ -6,6 +6,7 @@ const requiredFiles = [
   "template-library.html",
   "industry-packs.html",
   "paid-template-pack.html",
+  "business-license.html",
   "admin.html",
   "server.mjs",
   "sitemap.xml",
@@ -70,11 +71,11 @@ else fail("solution page count", `${solutions.length} pages`);
 
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 168) pass("sitemap entry count", "168 entries");
+if (sitemapEntries === 169) pass("sitemap entry count", "169 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "business-license.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -86,9 +87,15 @@ for (const needle of ["titleFactoryAiToolsVoice", "/api/generate", "ai-tools-wor
 }
 
 const paidPack = await readFile("paid-template-pack.html", "utf8");
-for (const needle of ["适合和不适合", "交付预览", "购买决策清单", "title-factory-paid-pack-preview.png", "常见问题", "application/ld+json", "PreOrder"]) {
+for (const needle of ["适合和不适合", "交付预览", "购买决策清单", "business-license.html", "title-factory-paid-pack-preview.png", "常见问题", "application/ld+json", "PreOrder"]) {
   if (paidPack.includes(needle)) pass(`paid pack page contains ${needle}`);
   else fail(`paid pack page contains ${needle}`, "missing");
+}
+
+const businessLicense = await readFile("business-license.html", "utf8");
+for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "Product", "PreOrder"]) {
+  if (businessLicense.includes(needle)) pass(`business license page contains ${needle}`);
+  else fail(`business license page contains ${needle}`, "missing");
 }
 
 const starterPackPage = await readFile("downloads/title-factory-starter-pack.html", "utf8");

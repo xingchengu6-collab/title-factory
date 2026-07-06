@@ -693,6 +693,7 @@ function renderSitemap() {
   const corePages = [
     { loc: "", priority: "1.0" },
     { loc: "paid-template-pack.html", priority: "0.9" },
+    { loc: "business-license.html", priority: "0.89" },
     { loc: "downloads/title-factory-starter-pack.html", priority: "0.85" },
     { loc: "template-library.html", priority: "0.88" },
     { loc: "industry-packs.html", priority: "0.87" },

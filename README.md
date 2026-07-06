@@ -6,6 +6,7 @@
 
 - 首页工具：`index.html`
 - AI 工具垂直工作台：`ai-tools-workbench.html`
+- 商业授权页：`business-license.html`
 - 行业数据：`data/seo-pages.mjs`
 - 页面生成脚本：`scripts/generate-seo-pages.mjs`
 - 本地服务和生成接口：`server.mjs`
@@ -60,6 +61,7 @@ http://localhost:4173/healthz
 首页已经包含两个轻量入口：
 
 - 免费模板包下载：`downloads/title-factory-starter-pack.md`
+- 商业授权：`business-license.html`
 - Pro 等待名单：提交后保存到 `data/waitlist.csv`
 - 价格区：免费版、模板包、Pro 版
 
