@@ -1,4 +1,5 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
+import { commercialLicensePages } from "../data/commercial-license-pages.mjs";
 import { industryPacks } from "../data/industry-packs.mjs";
 import { seoPages } from "../data/seo-pages.mjs";
 import { solutionPages } from "../data/solution-pages.mjs";
@@ -689,11 +690,234 @@ function renderSeoPage(page) {
 `;
 }
 
+function renderCommercialLicenseJsonLd(page, description) {
+  return JSON.stringify(
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: page.title,
+        description,
+        brand: { "@type": "Brand", name: "标题工厂" },
+        url: `${baseUrl}/licenses/${page.slug}.html`,
+        offers: {
+          "@type": "Offer",
+          price: "999",
+          priceCurrency: "CNY",
+          availability: "https://schema.org/PreOrder",
+          url: `${baseUrl}/business-license.html`,
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `${page.title}适合谁？`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `适合${formatAudience(page.audience)}，尤其适合需要团队内部复用、客户项目打样或建立内容 SOP 的使用场景。`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "商业授权和普通模板包有什么区别？",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "普通模板包适合个人下载后自己改写，商业授权适合团队内部复用、客户项目打样和工作室交付边界说明。",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "商业授权包含代运营或咨询吗？",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "不包含。商业授权是数字产品授权，不包含代运营、代写、一对一咨询、账号诊断或效果保证。",
+            },
+          },
+        ],
+      },
+    ],
+    null,
+    2
+  );
+}
+
+function renderCommercialLicensePage(page) {
+  const description = `${page.title}，适合${formatAudience(page.audience)}。用于团队内部复用、客户项目打样和内容 SOP 沉淀，导向标题工厂 ¥999 商业授权版。`;
+  const examples = page.examples
+    .map((example, index) => `<li><span>${index + 1}</span>${escapeHtml(example)}</li>`)
+    .join("");
+
+  return `<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${escapeHtml(page.title)} - 标题工厂商业授权</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${baseUrl}/licenses/${page.slug}.html" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="${baseUrl}/licenses/${page.slug}.html" />
+    <script type="application/ld+json">${renderCommercialLicenseJsonLd(page, description)}</script>
+    <style>
+      :root {
+        --ink: #151515;
+        --muted: #62656b;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --soft: #f6f8f3;
+        --teal: #14785f;
+        --gold: #a66a12;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: linear-gradient(180deg, #fbfaf7 0%, #fff 52%);
+      }
+      a { color: inherit; }
+      .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+      header { position: sticky; top: 0; z-index: 8; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.9); backdrop-filter: blur(16px); }
+      nav { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 850; }
+      .mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 8px; color: #fff; background: var(--ink); }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+      .hero { display: grid; grid-template-columns: 1fr .84fr; gap: 34px; align-items: center; padding: 56px 0 32px; }
+      .kicker { display: inline-flex; width: fit-content; border: 1px solid #b8d8ca; color: #0f624f; background: #effaf5; border-radius: 999px; padding: 7px 11px; font-size: 13px; font-weight: 800; }
+      h1 { margin: 18px 0 16px; font-size: clamp(36px, 6vw, 62px); line-height: 1.04; letter-spacing: 0; }
+      .lead { max-width: 720px; color: var(--muted); font-size: 18px; line-height: 1.8; }
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+      .primary, .secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 11px 15px; text-decoration: none; font-weight: 850; }
+      .primary { color: #fff; background: var(--ink); border: 1px solid var(--ink); }
+      .secondary { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+      .panel, .card, .bar { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+      .panel { box-shadow: 0 18px 48px rgba(0,0,0,.08); padding: 22px; }
+      .panel strong { display: block; color: var(--gold); margin: 10px 0; font-size: 42px; line-height: 1; }
+      .panel p, .card p, .card li, .bar p { color: var(--muted); line-height: 1.75; }
+      section { padding: 26px 0; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .card { padding: 20px; }
+      .card h2 { margin: 0 0 12px; font-size: 23px; letter-spacing: 0; }
+      .card p { margin: 0; }
+      .band { border-block: 1px solid #e4e8dd; background: var(--soft); }
+      ol { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+      li span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: var(--teal); font-weight: 850; }
+      .bar { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; padding: 22px; }
+      .bar strong { display: block; margin-bottom: 8px; font-size: 22px; }
+      footer { border-top: 1px solid var(--line); color: var(--muted); padding: 28px 0 40px; }
+      @media (max-width: 860px) {
+        nav, .hero, .grid, .bar { grid-template-columns: 1fr; }
+        nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="../index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <div class="nav-links">
+          <a href="../business-license.html">商业授权</a>
+          <a href="../business-license-vs-template-pack.html">授权区别</a>
+          <a href="../purchase-guide.html">买哪个版本</a>
+          <a href="../paid-template-pack.html">付费模板包</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">商业授权入口 · 高客单价搜索</span>
+          <h1>${escapeHtml(page.title)}</h1>
+          <p class="lead">${escapeHtml(description)}</p>
+          <div class="actions">
+            <a class="primary" href="../business-license.html">查看 ¥999 商业授权</a>
+            <a class="secondary" href="../business-license-vs-template-pack.html">先看授权区别</a>
+            <a class="secondary" href="../purchase-guide.html">买哪个版本</a>
+          </div>
+        </div>
+        <aside class="panel">
+          <span class="kicker">推荐层级</span>
+          <strong>¥999</strong>
+          <p>适合团队内部复用、客户项目打样和内容 SOP 沉淀。不包含代运营、代写、一对一咨询或效果保证。</p>
+        </aside>
+      </section>
+      <section class="shell grid">
+        <article class="card">
+          <h2>适合谁</h2>
+          <p>${escapeHtml(page.audience)}。</p>
+        </article>
+        <article class="card">
+          <h2>当前卡点</h2>
+          <p>${escapeHtml(page.pain)}</p>
+        </article>
+        <article class="card">
+          <h2>授权后怎么用</h2>
+          <p>${escapeHtml(page.outcome)}</p>
+        </article>
+      </section>
+      <section class="shell">
+        <article class="card">
+          <h2>可承接的搜索意图</h2>
+          <p>${escapeHtml(page.intent)}</p>
+        </article>
+      </section>
+      <section class="band">
+        <div class="shell grid">
+          <article class="card">
+            <h2>团队内部复用</h2>
+            <p>可以把模板整理进飞书、Notion、语雀或内部表格，让成员按统一结构出标题、脚本和销售页方向。</p>
+          </article>
+          <article class="card">
+            <h2>客户项目打样</h2>
+            <p>可以用于客户项目中的改写后内容方向，但不能把原始模板包、授权文件或压缩包二次转售。</p>
+          </article>
+          <article class="card">
+            <h2>边界更清楚</h2>
+            <p>商业授权文件会写明允许、禁止和不包含的服务，减少后续人工解释。</p>
+          </article>
+        </div>
+      </section>
+      <section class="shell">
+        <article class="card">
+          <h2>典型使用场景</h2>
+          <ol>${examples}</ol>
+        </article>
+      </section>
+      <section class="shell">
+        <div class="bar">
+          <div>
+            <strong>如果只是个人使用，先买普通模板包就够了。</strong>
+            <p>如果多人共用、用于客户项目或要沉淀团队 SOP，再考虑商业授权。</p>
+          </div>
+          <div class="actions">
+            <a class="primary" href="../business-license.html">查看商业授权</a>
+            <a class="secondary" href="../paid-template-pack.html">查看普通模板包</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="shell">标题工厂 · ${escapeHtml(page.title)}</div>
+    </footer>
+  </body>
+</html>
+`;
+}
+
 function renderSitemap() {
   const corePages = [
     { loc: "", priority: "1.0" },
     { loc: "paid-template-pack.html", priority: "0.9" },
+    { loc: "purchase-guide.html", priority: "0.9" },
     { loc: "business-license.html", priority: "0.89" },
+    { loc: "business-license-vs-template-pack.html", priority: "0.88" },
     { loc: "downloads/title-factory-starter-pack.html", priority: "0.85" },
     { loc: "template-library.html", priority: "0.88" },
     { loc: "industry-packs.html", priority: "0.87" },
@@ -738,6 +962,15 @@ ${solutionPages
   </url>`
   )
   .join("\n")}
+${commercialLicensePages
+  .map(
+    (page) => `  <url>
+    <loc>${baseUrl}/licenses/${page.slug}.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.86</priority>
+  </url>`
+  )
+  .join("\n")}
 </urlset>
 `;
 }
@@ -745,9 +978,11 @@ ${solutionPages
 await rm("tools", { recursive: true, force: true });
 await rm("packs", { recursive: true, force: true });
 await rm("solutions", { recursive: true, force: true });
+await rm("licenses", { recursive: true, force: true });
 await mkdir("tools", { recursive: true });
 await mkdir("packs", { recursive: true });
 await mkdir("solutions", { recursive: true });
+await mkdir("licenses", { recursive: true });
 
 for (const page of seoPages) {
   await writeFile(`tools/${page.slug}.html`, renderSeoPage(page), "utf8");
@@ -759,6 +994,10 @@ for (const pack of industryPacks) {
 
 for (const solution of solutionPages) {
   await writeFile(`solutions/${solution.slug}.html`, renderSolutionPage(solution), "utf8");
+}
+
+for (const page of commercialLicensePages) {
+  await writeFile(`licenses/${page.slug}.html`, renderCommercialLicensePage(page), "utf8");
 }
 
 await writeFile("sitemap.xml", renderSitemap(), "utf8");
@@ -773,5 +1012,5 @@ Sitemap: ${baseUrl}/sitemap.xml
 );
 
 console.log(
-  `Generated ${seoPages.length} SEO pages, ${industryPacks.length} industry pack pages, ${solutionPages.length} solution pages, sitemap.xml, and robots.txt`
+  `Generated ${seoPages.length} SEO pages, ${industryPacks.length} industry pack pages, ${solutionPages.length} solution pages, ${commercialLicensePages.length} commercial license pages, sitemap.xml, and robots.txt`
 );

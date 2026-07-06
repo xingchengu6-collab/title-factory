@@ -20,6 +20,7 @@
 - 行业长尾工具页：`tools/*.html`，当前生成 125 个页面
 - 行业模板包页：`packs/*.html`，当前生成 25 个页面
 - 高购买意图方案页：`solutions/*.html`，当前生成 12 个页面
+- 商业授权高意图入口页：`licenses/*.html`，当前生成 6 个页面
 - 搜索引擎文件：`sitemap.xml`、`robots.txt`
 - 部署说明：`DEPLOY.md`
 - 运营计划：`OPERATING_PLAN.md`

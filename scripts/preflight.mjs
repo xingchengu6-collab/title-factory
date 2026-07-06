@@ -18,6 +18,7 @@ const requiredFiles = [
   "downloads/title-factory-starter-pack.csv",
   "downloads/title-factory-starter-pack.md",
   "downloads/ai-tools-paid-template-pack.md",
+  "data/commercial-license-pages.mjs",
   "data/industry-packs.mjs",
   "data/solution-pages.mjs",
   "data/events.csv",
@@ -74,13 +75,17 @@ const solutions = (await readdir("solutions")).filter((file) => file.endsWith(".
 if (solutions.length === 12) pass("solution page count", "12 pages");
 else fail("solution page count", `${solutions.length} pages`);
 
+const licenses = (await readdir("licenses")).filter((file) => file.endsWith(".html"));
+if (licenses.length === 6) pass("commercial license page count", "6 pages");
+else fail("commercial license page count", `${licenses.length} pages`);
+
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 171) pass("sitemap entry count", "171 entries");
+if (sitemapEntries === 177) pass("sitemap entry count", "177 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "purchase-guide.html", "business-license.html", "business-license-vs-template-pack.html", "businessLicenseCta", "checkout-config.json", "purchaseIntentUrl", "waitlistCopy", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "licenses/agency-content-template-license.html", "licenses/team-content-template-library.html", "商业授权搜索入口", "paid-template-pack.html", "purchase-guide.html", "business-license.html", "business-license-vs-template-pack.html", "businessLicenseCta", "checkout-config.json", "purchaseIntentUrl", "waitlistCopy", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -113,6 +118,18 @@ const businessLicenseComparison = await readFile("business-license-vs-template-p
 for (const needle of ["商业授权和普通模板包区别", "¥99 普通模板包", "¥999 商业授权", "团队内部复用", "客户项目打样", "FAQPage", "checkout-config.json"]) {
   if (businessLicenseComparison.includes(needle)) pass(`business license comparison contains ${needle}`);
   else fail(`business license comparison contains ${needle}`, "missing");
+}
+
+const agencyLicensePage = await readFile("licenses/agency-content-template-license.html", "utf8");
+for (const needle of ["代运营内容模板商业授权", "¥999", "团队内部复用", "客户项目打样", "Product", "PreOrder"]) {
+  if (agencyLicensePage.includes(needle)) pass(`agency license page contains ${needle}`);
+  else fail(`agency license page contains ${needle}`, "missing");
+}
+
+const teamLibraryLicensePage = await readFile("licenses/team-content-template-library.html", "utf8");
+for (const needle of ["团队内容模板库授权", "商业授权入口", "普通模板包", "business-license.html"]) {
+  if (teamLibraryLicensePage.includes(needle)) pass(`team library license page contains ${needle}`);
+  else fail(`team library license page contains ${needle}`, "missing");
 }
 
 const checkoutConfig = JSON.parse(await readFile("checkout-config.json", "utf8"));
