@@ -6,6 +6,7 @@
 
 - 首页工具：`index.html`
 - AI 工具垂直工作台：`ai-tools-workbench.html`
+- 自助购买决策页：`purchase-guide.html`
 - 商业授权页：`business-license.html`
 - 行业数据：`data/seo-pages.mjs`
 - 页面生成脚本：`scripts/generate-seo-pages.mjs`
