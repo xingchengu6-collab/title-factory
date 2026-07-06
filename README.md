@@ -8,6 +8,7 @@
 - AI 工具垂直工作台：`ai-tools-workbench.html`
 - 自助购买决策页：`purchase-guide.html`
 - 商业授权页：`business-license.html`
+- 商业授权对比页：`business-license-vs-template-pack.html`
 - 行业数据：`data/seo-pages.mjs`
 - 页面生成脚本：`scripts/generate-seo-pages.mjs`
 - 本地服务和生成接口：`server.mjs`
