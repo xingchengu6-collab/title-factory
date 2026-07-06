@@ -431,6 +431,35 @@
         font-size: 14px;
       }
 
+      .pack-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .pack-link {
+        display: grid;
+        gap: 8px;
+        min-height: 116px;
+        border: 1px solid #d6c09d;
+        color: var(--ink);
+        background: #fffaf0;
+        padding: 16px;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .pack-link strong {
+        font-size: 16px;
+      }
+
+      .pack-link span {
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+
       .monetize {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -616,6 +645,7 @@
         }
 
         .grid,
+        .pack-links,
         .monetize {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -651,6 +681,7 @@
         .stats,
         .tabs,
         .grid,
+        .pack-links,
         .monetize,
         .pricing,
         .capture,
@@ -823,6 +854,14 @@
           </p>
         </div>
         <div class="grid" id="industryGrid"></div>
+        <div class="pack-links" aria-label="高潜行业模板包">
+          <a class="pack-link" href="packs/ai-tools-template-pack.html"><strong>AI 工具内容模板包</strong><span>适合工具创作者和 AI 教程号，承接更高意图的工具内容搜索。</span></a>
+          <a class="pack-link" href="packs/ecommerce-product-title-template-pack.html"><strong>电商商品标题模板包</strong><span>适合店铺和商品运营，把标题、卖点和搜索词连起来。</span></a>
+          <a class="pack-link" href="packs/local-service-copy-template-pack.html"><strong>本地生活获客文案包</strong><span>适合门店和本地服务，把活动写成更真实的到店理由。</span></a>
+          <a class="pack-link" href="packs/saas-product-copy-template-pack.html"><strong>SaaS 产品标题文案包</strong><span>适合软件产品和企业服务，把功能写成客户关心的结果。</span></a>
+          <a class="pack-link" href="packs/knowledge-product-sales-page-template-pack.html"><strong>知识产品销售页模板包</strong><span>适合课程、模板和咨询产品，把价值包装成更容易购买的页面。</span></a>
+          <a class="pack-link" href="industry-packs.html"><strong>查看全部 25 个行业包</strong><span>从行业入口进入，再选择免费工具、样品包或完整付费包。</span></a>
+        </div>
       </section>
 
       <section class="shell">
@@ -840,7 +879,7 @@
             <ul class="features">
               <li>6 个生成器</li>
               <li>AI 工具工作台</li>
-              <li>125 个行业入口页</li>
+              <li>125 个工具页 + 25 个行业包页</li>
             </ul>
             <a class="secondary-cta" href="ai-tools-workbench.html">打开工作台</a>
           </article>
