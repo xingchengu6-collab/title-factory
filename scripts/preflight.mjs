@@ -19,6 +19,9 @@ const requiredFiles = [
   "render.yaml",
   "netlify.toml",
   "netlify/functions/api.mjs",
+  "scripts/build-paid-pack.mjs",
+  "scripts/generate-seo-pages.mjs",
+  "scripts/preflight.mjs",
   "Dockerfile",
   ".env.example",
 ];

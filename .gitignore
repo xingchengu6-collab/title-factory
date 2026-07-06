@@ -3,4 +3,5 @@
 node_modules/
 npm-debug.log*
 title-factory-v1.zip
+private-delivery/
 *.log
