@@ -3,6 +3,7 @@ import { readdir, readFile, stat } from "node:fs/promises";
 const requiredFiles = [
   "index.html",
   "ai-tools-workbench.html",
+  "template-library.html",
   "paid-template-pack.html",
   "admin.html",
   "server.mjs",
@@ -58,11 +59,11 @@ else fail("SEO page count", `${tools.length} pages`);
 
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 128) pass("sitemap entry count", "128 entries");
+if (sitemapEntries === 129) pass("sitemap entry count", "129 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -83,6 +84,12 @@ const starterPackPage = await readFile("downloads/title-factory-starter-pack.htm
 for (const needle of ["怎么试用这份样品", "样品包之后做什么", "application/ld+json"]) {
   if (starterPackPage.includes(needle)) pass(`starter pack page contains ${needle}`);
   else fail(`starter pack page contains ${needle}`, "missing");
+}
+
+const templateLibrary = await readFile("template-library.html", "utf8");
+for (const needle of ["公开模板库", "可复制模板样例", "CollectionPage", "title-factory-paid-pack-preview.png"]) {
+  if (templateLibrary.includes(needle)) pass(`template library contains ${needle}`);
+  else fail(`template library contains ${needle}`, "missing");
 }
 
 const events = await readFile("data/events.csv", "utf8");

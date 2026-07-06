@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>标题模板库 - 小红书、短视频、商品页、朋友圈和 AI 提示词样例</title>
+    <meta
+      name="description"
+      content="标题工厂公开模板库，提供小红书标题、短视频开头、商品页标题、朋友圈文案和 AI 提示词样例，适合内容创作者和商家直接改写。"
+    />
+    <link rel="canonical" href="https://xingchengu6-collab.github.io/template-library.html" />
+    <meta property="og:title" content="标题工厂模板库 - 可直接改写的标题和文案样例" />
+    <meta
+      property="og:description"
+      content="先看公开模板样例，再下载免费样品包或查看完整付费模板包。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://xingchengu6-collab.github.io/template-library.html" />
+    <style>
+      :root {
+        --ink: #171717;
+        --muted: #60646b;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --soft: #f4f8f5;
+        --mint: #e9f7ef;
+        --green: #14785f;
+        --gold: #a66a12;
+        --blue: #234a8f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+        background: #fff;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+      }
+      nav {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 850;
+      }
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--ink);
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 0.78fr;
+        gap: 34px;
+        align-items: center;
+        padding: 56px 0 32px;
+      }
+      .kicker {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid #b8d8ca;
+        color: #0f624f;
+        background: #effaf5;
+        border-radius: 999px;
+        padding: 7px 11px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(38px, 6vw, 64px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      .lead {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .primary,
+      .secondary {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 11px 15px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .primary {
+        color: #fff;
+        background: var(--ink);
+        border: 1px solid var(--ink);
+      }
+      .secondary {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .preview {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+      }
+      .preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .preview p {
+        margin: 0;
+        padding: 14px 16px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      section {
+        padding: 28px 0;
+      }
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 40px);
+        letter-spacing: 0;
+      }
+      .section-title p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .filter {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 750;
+      }
+      .filter.active {
+        color: #fff;
+        border-color: var(--ink);
+        background: var(--ink);
+      }
+      .library-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .template-card {
+        display: grid;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 18px;
+      }
+      .template-card[hidden] {
+        display: none;
+      }
+      .tagline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .tag {
+        width: fit-content;
+        border-radius: 999px;
+        color: #0f624f;
+        background: var(--mint);
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .tag.gold {
+        color: var(--gold);
+        background: #fff7e3;
+      }
+      .template-card h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .template-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .copy {
+        width: fit-content;
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+        padding: 8px 11px;
+        cursor: pointer;
+        font-weight: 750;
+      }
+      .band {
+        border-block: 1px solid #e4e8dd;
+        background: var(--soft);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        counter-reset: step;
+      }
+      .step {
+        border: 1px solid #dfe4d8;
+        border-radius: 8px;
+        background: #fff;
+        padding: 18px;
+        counter-increment: step;
+      }
+      .step::before {
+        content: counter(step);
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--green);
+        font-weight: 900;
+      }
+      .step strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .step span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .cta {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 18px;
+        border: 1px solid #d6c09d;
+        border-radius: 8px;
+        background: #fffaf0;
+        padding: 22px;
+      }
+      .cta h2 {
+        margin: 0 0 8px;
+      }
+      .cta p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 20;
+        transform: translateY(18px);
+        opacity: 0;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 8px;
+        padding: 10px 13px;
+        transition: 0.18s ease;
+        pointer-events: none;
+      }
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        padding: 28px 0 40px;
+      }
+      @media (max-width: 900px) {
+        .hero,
+        .library-grid,
+        .steps,
+        .cta {
+          grid-template-columns: 1fr;
+        }
+        .section-title {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <div class="nav-links">
+          <a href="index.html#tool">免费生成器</a>
+          <a href="ai-tools-workbench.html">AI 工作台</a>
+          <a href="downloads/title-factory-starter-pack.html">免费样品包</a>
+          <a href="paid-template-pack.html">付费模板包</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">公开模板库 · 可复制 · 可改写</span>
+          <h1>先看模板，再决定要不要买完整包。</h1>
+          <p class="lead">
+            这里放一批公开样例，覆盖小红书标题、短视频开头、商品页标题、朋友圈文案和 AI 提示词。你可以直接复制改写，也可以下载免费样品包继续试用。
+          </p>
+          <div class="actions">
+            <a class="primary" href="#library">浏览模板</a>
+            <a class="secondary" href="downloads/title-factory-starter-pack.html">下载免费样品</a>
+          </div>
+        </div>
+        <aside class="preview">
+          <img src="title-factory-paid-pack-preview.png" alt="标题工厂模板包预览" />
+          <p>完整付费包会把公开样例扩展成 25 个行业、1000 条模板和 750 条内容日历方向。</p>
+        </aside>
+      </section>
+
+      <section class="shell" id="library">
+        <div class="section-title">
+          <h2>可复制模板样例</h2>
+          <p>先选类型，再复制到你的内容里替换行业、人群、产品和痛点。公开库只放精选样例，完整包用于批量复用。</p>
+        </div>
+        <div class="filters" aria-label="模板类型筛选">
+          <button class="filter active" type="button" data-filter="all">全部</button>
+          <button class="filter" type="button" data-filter="xhs">小红书</button>
+          <button class="filter" type="button" data-filter="video">短视频</button>
+          <button class="filter" type="button" data-filter="product">商品页</button>
+          <button class="filter" type="button" data-filter="moments">朋友圈</button>
+          <button class="filter" type="button" data-filter="prompt">AI 提示词</button>
+        </div>
+        <div class="library-grid">
+          <article class="template-card" data-category="xhs">
+            <div class="tagline"><span class="tag">小红书</span><span class="tag gold">AI 工具</span></div>
+            <h3>功能变场景</h3>
+            <p>AI 工具没人点？先把“功能介绍”改成“具体使用场景”</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="xhs">
+            <div class="tagline"><span class="tag">小红书</span><span class="tag gold">美业</span></div>
+            <h3>避坑清单</h3>
+            <p>美业新手别再只发效果图了，先讲清客户最怕的 3 个问题</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="xhs">
+            <div class="tagline"><span class="tag">小红书</span><span class="tag gold">电商</span></div>
+            <h3>卖点重写</h3>
+            <p>商品标题普通？先把人群、场景和结果写进第一句话</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="video">
+            <div class="tagline"><span class="tag">短视频</span><span class="tag gold">自由职业</span></div>
+            <h3>前三秒开头</h3>
+            <p>如果你会做服务但客户不知道为什么找你，先看这个表达结构。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="video">
+            <div class="tagline"><span class="tag">短视频</span><span class="tag gold">装修</span></div>
+            <h3>误区开头</h3>
+            <p>很多第一次装修的人，不是预算不够，而是一开始就把顺序做反了。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="video">
+            <div class="tagline"><span class="tag">短视频</span><span class="tag gold">SaaS</span></div>
+            <h3>功能转价值</h3>
+            <p>别急着看功能列表，先看这个工具能不能解决你每天重复做的任务。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="product">
+            <div class="tagline"><span class="tag">商品页</span><span class="tag gold">知识产品</span></div>
+            <h3>模板包标题</h3>
+            <p>内容创作者可直接套用的标题与提示词素材库，适合连续发布和批量生产</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="product">
+            <div class="tagline"><span class="tag">商品页</span><span class="tag gold">服饰</span></div>
+            <h3>场景标题</h3>
+            <p>通勤女生轻便托特包，大容量、防泼水、电脑隔层，适合上班和短途出行</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="product">
+            <div class="tagline"><span class="tag">商品页</span><span class="tag gold">本地生活</span></div>
+            <h3>门店标题</h3>
+            <p>周末亲子可预约的手作体验课，适合 6 岁以上孩子，成品可带走</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="moments">
+            <div class="tagline"><span class="tag">朋友圈</span><span class="tag gold">B2B</span></div>
+            <h3>客户场景</h3>
+            <p>很多企业不是没有需求，而是还没把问题拆到“谁每天被什么流程卡住”。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="moments">
+            <div class="tagline"><span class="tag">朋友圈</span><span class="tag gold">摄影</span></div>
+            <h3>价值表达</h3>
+            <p>照片好看只是结果，真正影响体验的是拍摄前有没有把风格、场景和用途讲清楚。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="moments">
+            <div class="tagline"><span class="tag">朋友圈</span><span class="tag gold">教育</span></div>
+            <h3>信任表达</h3>
+            <p>课程介绍不要一上来讲体系，先回答家长最担心的那个具体问题。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="prompt">
+            <div class="tagline"><span class="tag">AI 提示词</span><span class="tag gold">标题</span></div>
+            <h3>小红书标题提示词</h3>
+            <p>你是内容策划。目标用户是【人群】，产品是【产品】，痛点是【痛点】。请生成 20 个具体、自然、不夸张的小红书标题。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="prompt">
+            <div class="tagline"><span class="tag">AI 提示词</span><span class="tag gold">日历</span></div>
+            <h3>30 天内容日历</h3>
+            <p>你是增长顾问。请为【行业】的【目标用户】设计 30 天内容计划，每天包含标题、正文方向和结尾引导。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+          <article class="template-card" data-category="prompt">
+            <div class="tagline"><span class="tag">AI 提示词</span><span class="tag gold">商品页</span></div>
+            <h3>商品页改写</h3>
+            <p>你是商品标题优化师。请把【产品】改写成 10 个标题，包含目标人群、使用场景、关键卖点和结果。</p>
+            <button class="copy" type="button">复制</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="shell">
+          <div class="section-title">
+            <h2>怎么把样例变成自己的内容</h2>
+            <p>公开库负责给方向，免费样品负责试用，完整包负责批量复用。</p>
+          </div>
+          <div class="steps">
+            <article class="step"><strong>选类型</strong><span>先按小红书、短视频、商品页、朋友圈或提示词选择模板。</span></article>
+            <article class="step"><strong>换变量</strong><span>把行业、人群、产品、痛点改成自己的真实信息。</span></article>
+            <article class="step"><strong>批量改写</strong><span>复制到免费生成器或 AI 工作台，一次生成多个版本。</span></article>
+            <article class="step"><strong>升级完整包</strong><span>需要更多行业和更大数量时，再使用完整付费模板包。</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell">
+        <div class="cta">
+          <div>
+            <h2>想要更多行业和批量模板？</h2>
+            <p>公开库只放精选样例。完整付费包包含 1000 条模板和 750 条内容日历方向，适合长期做内容的人批量复用。</p>
+          </div>
+          <div class="actions">
+            <a class="primary" href="paid-template-pack.html">查看完整付费包</a>
+            <a class="secondary" href="downloads/title-factory-starter-pack.html">先下载免费样品</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">标题工厂 · 公开模板吸引流量，免费样品建立信任，完整模板包承接付费。</div>
+    </footer>
+    <div class="toast" id="toast">已复制</div>
+    <script>
+      const filters = Array.from(document.querySelectorAll(".filter"));
+      const cards = Array.from(document.querySelectorAll(".template-card"));
+      const toast = document.querySelector("#toast");
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.setTimeout(() => toast.classList.remove("show"), 1400);
+      }
+
+      filters.forEach((filter) => {
+        filter.addEventListener("click", () => {
+          const value = filter.dataset.filter;
+          filters.forEach((item) => item.classList.toggle("active", item === filter));
+          cards.forEach((card) => {
+            card.hidden = value !== "all" && card.dataset.category !== value;
+          });
+        });
+      });
+
+      document.querySelectorAll(".copy").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const card = button.closest(".template-card");
+          const text = card.querySelector("p").textContent.trim();
+          await navigator.clipboard.writeText(text);
+          showToast("模板已复制");
+        });
+      });
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "标题工厂公开模板库",
+        "description": "小红书标题、短视频开头、商品页标题、朋友圈文案和 AI 提示词公开样例。",
+        "url": "https://xingchengu6-collab.github.io/template-library.html",
+        "isPartOf": { "@type": "WebSite", "name": "标题工厂", "url": "https://xingchengu6-collab.github.io/" }
+      }
+    </script>
+  </body>
+</html>
