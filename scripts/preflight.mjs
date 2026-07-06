@@ -16,6 +16,8 @@ const requiredFiles = [
   "OPERATING_PLAN.md",
   "RELEASE_NOTES.md",
   "render.yaml",
+  "netlify.toml",
+  "netlify/functions/api.mjs",
   "Dockerfile",
   ".env.example",
 ];
