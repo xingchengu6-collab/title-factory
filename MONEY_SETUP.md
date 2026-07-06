@@ -88,12 +88,35 @@ private-delivery/title-factory-paid-template-pack-v1.zip
 ¥999
 ```
 
+可直接上架的交付文件：
+
+```text
+private-delivery/title-factory-business-license-v1.zip
+```
+
+商业授权上架推荐信息：
+
+```text
+标题：标题工厂商业授权版：团队内容模板和客户项目打样授权
+价格：999 元
+交付：上传 private-delivery/title-factory-business-license-v1.zip
+文案：private-delivery/title-factory-business-license-v1/listing-copy.md
+```
+
 商业授权适合：
 
 - 代运营团队内部复用模板体系
 - 工作室在客户项目里做内容打样
 - 企业内容运营沉淀标题、提示词和销售页 SOP
 - 不包含代运营、一对一咨询、二次转售或效果保证
+
+商业授权包内包含：
+
+- 标题工厂付费模板包 v1
+- 商业授权边界说明
+- 团队内部复用 SOP
+- 客户项目打样流程
+- 买家阅读说明和上架文案
 
 ## 上线后每天看什么
 

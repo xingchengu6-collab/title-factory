@@ -26,6 +26,7 @@ const requiredFiles = [
   "render.yaml",
   "netlify.toml",
   "netlify/functions/api.mjs",
+  "scripts/build-business-license.mjs",
   "scripts/build-paid-pack.mjs",
   "scripts/generate-seo-pages.mjs",
   "scripts/preflight.mjs",
@@ -96,6 +97,18 @@ const businessLicense = await readFile("business-license.html", "utf8");
 for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "Product", "PreOrder"]) {
   if (businessLicense.includes(needle)) pass(`business license page contains ${needle}`);
   else fail(`business license page contains ${needle}`, "missing");
+}
+
+const businessLicenseBuilder = await readFile("scripts/build-business-license.mjs", "utf8");
+for (const needle of ["title-factory-business-license-v1.zip", "commercial-license-terms.md", "team-sop.md", "client-project-workflow.md", "listing-copy.md"]) {
+  if (businessLicenseBuilder.includes(needle)) pass(`business license builder contains ${needle}`);
+  else fail(`business license builder contains ${needle}`, "missing");
+}
+
+const moneySetup = await readFile("MONEY_SETUP.md", "utf8");
+for (const needle of ["BUSINESS_LICENSE_URL", "title-factory-business-license-v1.zip", "标题工厂商业授权版：团队内容模板和客户项目打样授权", "价格：999 元"]) {
+  if (moneySetup.includes(needle)) pass(`money setup contains ${needle}`);
+  else fail(`money setup contains ${needle}`, "missing");
 }
 
 const starterPackPage = await readFile("downloads/title-factory-starter-pack.html", "utf8");
