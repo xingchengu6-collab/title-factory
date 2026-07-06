@@ -42,6 +42,7 @@ private-delivery/title-factory-paid-template-pack-v1.zip
 - Markdown 模板库、CSV 表格版和使用说明
 - 适合下载后直接复制、筛选、改写和复用
 - 25 个行业模板包页可作为付费包的精准入口
+- 12 个高购买意图方案页可承接“模板包”“销售页”“提示词”等付费意图搜索
 
 ## 当前支付入口状态
 
@@ -49,6 +50,7 @@ private-delivery/title-factory-paid-template-pack-v1.zip
 - 面包多账号已提交创作者申请；当前提示“未审核用户，需要先申请创作者”，因此还不能创建商品。
 - `paid-template-pack.html` 暂时展示“自动购买入口接入中”，按钮指向免费样品包，避免空链接。
 - `industry-packs.html` 和 `packs/*.html` 负责承接行业搜索，再导向免费工具、样品包和完整付费包。
+- `solutions/*.html` 负责承接更接近购买的搜索词，再导向对应行业包、免费样品和完整付费包。
 - 审核通过后，在面包多创建单品，上传 `private-delivery/title-factory-paid-template-pack-v1.zip`，拿到商品链接后填入购买按钮。
 
 面包多上架推荐信息：

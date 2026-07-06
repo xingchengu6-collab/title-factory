@@ -15,6 +15,7 @@ const requiredFiles = [
   "downloads/title-factory-starter-pack.md",
   "downloads/ai-tools-paid-template-pack.md",
   "data/industry-packs.mjs",
+  "data/solution-pages.mjs",
   "data/events.csv",
   "data/waitlist.csv",
   "DEPLOY.md",
@@ -63,13 +64,17 @@ const packs = (await readdir("packs")).filter((file) => file.endsWith(".html"));
 if (packs.length === 25) pass("industry pack page count", "25 pages");
 else fail("industry pack page count", `${packs.length} pages`);
 
+const solutions = (await readdir("solutions")).filter((file) => file.endsWith(".html"));
+if (solutions.length === 12) pass("solution page count", "12 pages");
+else fail("solution page count", `${solutions.length} pages`);
+
 const sitemap = await readFile("sitemap.xml", "utf8");
 const sitemapEntries = (sitemap.match(/<url>/g) || []).length;
-if (sitemapEntries === 156) pass("sitemap entry count", "156 entries");
+if (sitemapEntries === 168) pass("sitemap entry count", "168 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -114,6 +119,18 @@ const knowledgePack = await readFile("packs/knowledge-product-sales-page-templat
 for (const needle of ["知识产品销售页模板包", "下载样品", "查看完整包"]) {
   if (knowledgePack.includes(needle)) pass(`knowledge product pack page contains ${needle}`);
   else fail(`knowledge product pack page contains ${needle}`, "missing");
+}
+
+const promptSolution = await readFile("solutions/ai-prompt-template-pack.html", "utf8");
+for (const needle of ["AI 提示词模板包", "高购买意图入口", "查看完整付费包", "Product"]) {
+  if (promptSolution.includes(needle)) pass(`AI prompt solution page contains ${needle}`);
+  else fail(`AI prompt solution page contains ${needle}`, "missing");
+}
+
+const salesPageSolution = await readFile("solutions/digital-product-sales-page-template.html", "utf8");
+for (const needle of ["数字产品销售页模板", "搜索意图更接近付费", "paid-template-pack.html"]) {
+  if (salesPageSolution.includes(needle)) pass(`digital product solution page contains ${needle}`);
+  else fail(`digital product solution page contains ${needle}`, "missing");
 }
 
 const events = await readFile("data/events.csv", "utf8");

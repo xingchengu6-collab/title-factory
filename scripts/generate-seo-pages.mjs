@@ -1,6 +1,7 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { industryPacks } from "../data/industry-packs.mjs";
 import { seoPages } from "../data/seo-pages.mjs";
+import { solutionPages } from "../data/solution-pages.mjs";
 
 const baseUrl = process.env.SITE_URL || "https://xingchengu6-collab.github.io";
 const today =
@@ -265,6 +266,221 @@ function renderIndustryPackPage(pack) {
 `;
 }
 
+function renderSolutionJsonLd(solution, description) {
+  return JSON.stringify(
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: solution.title,
+        description,
+        brand: { "@type": "Brand", name: "标题工厂" },
+        url: `${baseUrl}/solutions/${solution.slug}.html`,
+        offers: {
+          "@type": "Offer",
+          price: "99",
+          priceCurrency: "CNY",
+          availability: "https://schema.org/PreOrder",
+          url: `${baseUrl}/paid-template-pack.html`,
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `${solution.title}适合谁？`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `适合${formatAudience(solution.audience)}，尤其适合已经想找模板、提高内容效率或准备卖数字产品的人。`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: "这是免费工具还是付费模板？",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "页面提供免费工具和样品包入口，完整模板包按数字产品交付设计，审核通过后会接入自动购买下载。",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "能保证涨粉或成交吗？",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "不能保证涨粉或成交。它解决的是标题、文案、销售页和提示词表达效率问题，最终效果还受产品、渠道和执行影响。",
+            },
+          },
+        ],
+      },
+    ],
+    null,
+    2
+  );
+}
+
+function renderSolutionPage(solution) {
+  const description = `${solution.title}，适合${formatAudience(solution.audience)}。先用免费工具和样品包验证结构，再进入完整付费模板包。`;
+  const examples = solution.examples
+    .map((example, index) => `<li><span>${index + 1}</span>${escapeHtml(example)}</li>`)
+    .join("");
+
+  return `<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${escapeHtml(solution.title)} - 标题工厂</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${baseUrl}/solutions/${solution.slug}.html" />
+    <meta property="og:title" content="${escapeHtml(solution.title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${baseUrl}/solutions/${solution.slug}.html" />
+    <script type="application/ld+json">${renderSolutionJsonLd(solution, description)}</script>
+    <style>
+      :root {
+        --ink: #171717;
+        --muted: #626262;
+        --line: #dddddd;
+        --paper: #ffffff;
+        --soft: #f8f5ee;
+        --mint: #e9f7ef;
+        --teal: #14785f;
+        --gold: #a66a12;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: linear-gradient(180deg, #fbfaf7 0%, #fff 54%);
+      }
+      a { color: inherit; }
+      .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+      header { position: sticky; top: 0; z-index: 8; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.9); backdrop-filter: blur(16px); }
+      nav { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 850; }
+      .mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 8px; color: #fff; background: var(--ink); }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+      .hero { display: grid; grid-template-columns: 1fr .84fr; gap: 34px; align-items: center; padding: 56px 0 32px; }
+      .kicker { display: inline-flex; width: fit-content; border: 1px solid #b8d8ca; color: #0f624f; background: #effaf5; border-radius: 999px; padding: 7px 11px; font-size: 13px; font-weight: 800; }
+      h1 { margin: 18px 0 16px; font-size: clamp(36px, 6vw, 62px); line-height: 1.04; letter-spacing: 0; }
+      .lead { max-width: 720px; color: var(--muted); font-size: 18px; line-height: 1.8; }
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+      .primary, .secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 11px 15px; text-decoration: none; font-weight: 850; }
+      .primary { color: #fff; background: var(--ink); border: 1px solid var(--ink); }
+      .secondary { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+      .panel, .card, .bar { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+      .panel { box-shadow: 0 18px 48px rgba(0,0,0,.08); padding: 22px; }
+      .panel strong { display: block; margin-bottom: 8px; font-size: 30px; line-height: 1.1; }
+      .panel p, .card p, .card li, .bar p { color: var(--muted); line-height: 1.75; }
+      section { padding: 26px 0; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .card { padding: 20px; }
+      .card h2 { margin: 0 0 12px; font-size: 23px; letter-spacing: 0; }
+      .card p { margin: 0; }
+      ol { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+      li span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: var(--teal); font-weight: 850; }
+      .band { border-block: 1px solid #e4e8dd; background: var(--soft); }
+      .bar { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; padding: 22px; }
+      .bar strong { display: block; margin-bottom: 8px; font-size: 22px; }
+      .price { color: var(--gold); font-weight: 900; }
+      footer { border-top: 1px solid var(--line); color: var(--muted); padding: 28px 0 40px; }
+      @media (max-width: 860px) {
+        nav, .hero, .grid, .bar { grid-template-columns: 1fr; }
+        nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="../index.html"><span class="mark">T</span><span>标题工厂</span></a>
+        <div class="nav-links">
+          <a href="../industry-packs.html">行业包</a>
+          <a href="../template-library.html">模板库</a>
+          <a href="../downloads/title-factory-starter-pack.html">免费样品包</a>
+          <a href="../paid-template-pack.html">付费模板包</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="shell hero">
+        <div>
+          <span class="kicker">解决方案 · 高购买意图入口</span>
+          <h1>${escapeHtml(solution.title)}</h1>
+          <p class="lead">${escapeHtml(description)}</p>
+          <div class="actions">
+            <a class="primary" href="../${escapeHtml(solution.toolHref)}">先用免费工具</a>
+            <a class="secondary" href="../${escapeHtml(solution.packHref)}">查看对应模板包</a>
+          </div>
+        </div>
+        <aside class="panel">
+          <strong>搜索意图更接近付费</strong>
+          <p>${escapeHtml(solution.intent)}</p>
+        </aside>
+      </section>
+      <section class="shell grid">
+        <article class="card">
+          <h2>适合谁</h2>
+          <p>${escapeHtml(solution.audience)}。</p>
+        </article>
+        <article class="card">
+          <h2>正在卡在哪里</h2>
+          <p>${escapeHtml(solution.pain)}</p>
+        </article>
+        <article class="card">
+          <h2>拿到后怎么用</h2>
+          <p>${escapeHtml(solution.outcome)}</p>
+        </article>
+      </section>
+      <section class="shell">
+        <article class="card">
+          <h2>可直接改写的方向</h2>
+          <ol>${examples}</ol>
+        </article>
+      </section>
+      <section class="band">
+        <div class="shell grid">
+          <article class="card">
+            <h2>先试工具</h2>
+            <p>免费工具适合快速生成第一批标题、文案和提示词，判断表达方向是否对路。</p>
+          </article>
+          <article class="card">
+            <h2>再看样品</h2>
+            <p>样品包负责让用户看到真实结构，降低直接购买完整包的犹豫。</p>
+          </article>
+          <article class="card">
+            <h2>最后进入完整包</h2>
+            <p><span class="price">¥99</span> 完整包包含 25 个行业、1000+ 条模板和 750 条内容日历方向。</p>
+          </article>
+        </div>
+      </section>
+      <section class="shell">
+        <div class="bar">
+          <div>
+            <strong>这类页面负责承接“我想买模板”的搜索。</strong>
+            <p>比普通工具页更靠近付费意图，但仍保留免费工具和样品包入口，避免用户马上离开。</p>
+          </div>
+          <div class="actions">
+            <a class="primary" href="../downloads/title-factory-starter-pack.html">下载样品</a>
+            <a class="secondary" href="../paid-template-pack.html">查看完整付费包</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="shell">标题工厂 · ${escapeHtml(solution.title)}</div>
+    </footer>
+  </body>
+</html>
+`;
+}
+
 function pageFaq(page) {
   return [
     {
@@ -512,14 +728,25 @@ ${industryPacks
   </url>`
   )
   .join("\n")}
+${solutionPages
+  .map(
+    (solution) => `  <url>
+    <loc>${baseUrl}/solutions/${solution.slug}.html</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.83</priority>
+  </url>`
+  )
+  .join("\n")}
 </urlset>
 `;
 }
 
 await rm("tools", { recursive: true, force: true });
 await rm("packs", { recursive: true, force: true });
+await rm("solutions", { recursive: true, force: true });
 await mkdir("tools", { recursive: true });
 await mkdir("packs", { recursive: true });
+await mkdir("solutions", { recursive: true });
 
 for (const page of seoPages) {
   await writeFile(`tools/${page.slug}.html`, renderSeoPage(page), "utf8");
@@ -527,6 +754,10 @@ for (const page of seoPages) {
 
 for (const pack of industryPacks) {
   await writeFile(`packs/${pack.slug}.html`, renderIndustryPackPage(pack), "utf8");
+}
+
+for (const solution of solutionPages) {
+  await writeFile(`solutions/${solution.slug}.html`, renderSolutionPage(solution), "utf8");
 }
 
 await writeFile("sitemap.xml", renderSitemap(), "utf8");
@@ -540,4 +771,6 @@ Sitemap: ${baseUrl}/sitemap.xml
   "utf8"
 );
 
-console.log(`Generated ${seoPages.length} SEO pages, ${industryPacks.length} industry pack pages, sitemap.xml, and robots.txt`);
+console.log(
+  `Generated ${seoPages.length} SEO pages, ${industryPacks.length} industry pack pages, ${solutionPages.length} solution pages, sitemap.xml, and robots.txt`
+);
