@@ -32,6 +32,7 @@ SITE_URL=https://你的正式域名
 AI_API_KEY=你的 AI 密钥
 TEMPLATE_PACK_URL=模板包购买链接
 PRO_CHECKOUT_URL=Pro 购买或订阅链接
+BUSINESS_LICENSE_URL=商业授权购买链接
 ```
 
 ## 发布命令

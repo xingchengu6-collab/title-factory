@@ -76,7 +76,7 @@ if (sitemapEntries === 169) pass("sitemap entry count", "169 entries");
 else fail("sitemap entry count", `${sitemapEntries} entries`);
 
 const index = await readFile("index.html", "utf8");
-for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "business-license.html", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
+for (const needle of ["ai-tools-workbench.html", "template-library.html", "industry-packs.html", "packs/ai-tools-template-pack.html", "solutions/ai-prompt-template-pack.html", "paid-template-pack.html", "business-license.html", "businessLicenseCta", "title-factory-starter-pack.html", "data-mode=\"calendar\"", "exportMarkdown"]) {
   if (index.includes(needle)) pass(`homepage contains ${needle}`);
   else fail(`homepage contains ${needle}`, "missing");
 }
@@ -88,13 +88,13 @@ for (const needle of ["titleFactoryAiToolsVoice", "/api/generate", "ai-tools-wor
 }
 
 const paidPack = await readFile("paid-template-pack.html", "utf8");
-for (const needle of ["适合和不适合", "交付预览", "购买决策清单", "business-license.html", "title-factory-paid-pack-preview.png", "常见问题", "application/ld+json", "PreOrder"]) {
+for (const needle of ["适合和不适合", "交付预览", "购买决策清单", "business-license.html", "businessLicenseUpsell", "title-factory-paid-pack-preview.png", "/api/config", "templatePackUrl", "常见问题", "application/ld+json", "PreOrder"]) {
   if (paidPack.includes(needle)) pass(`paid pack page contains ${needle}`);
   else fail(`paid pack page contains ${needle}`, "missing");
 }
 
 const businessLicense = await readFile("business-license.html", "utf8");
-for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "999 元怎么判断值不值", "交付文件清单", "常见问题", "Product", "PreOrder"]) {
+for (const needle of ["标题工厂商业授权版", "¥999", "授权范围", "团队和工作室", "999 元怎么判断值不值", "交付文件清单", "常见问题", "businessBuyButton", "businessLicenseUrl", "Product", "PreOrder"]) {
   if (businessLicense.includes(needle)) pass(`business license page contains ${needle}`);
   else fail(`business license page contains ${needle}`, "missing");
 }
@@ -110,6 +110,22 @@ for (const needle of ["BUSINESS_LICENSE_URL", "title-factory-business-license-v1
   if (moneySetup.includes(needle)) pass(`money setup contains ${needle}`);
   else fail(`money setup contains ${needle}`, "missing");
 }
+
+const server = await readFile("server.mjs", "utf8");
+for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl"]) {
+  if (server.includes(needle)) pass(`server config contains ${needle}`);
+  else fail(`server config contains ${needle}`, "missing");
+}
+
+const netlifyApi = await readFile("netlify/functions/api.mjs", "utf8");
+for (const needle of ["BUSINESS_LICENSE_URL", "businessLicenseUrl"]) {
+  if (netlifyApi.includes(needle)) pass(`netlify api contains ${needle}`);
+  else fail(`netlify api contains ${needle}`, "missing");
+}
+
+const envExample = await readFile(".env.example", "utf8");
+if (envExample.includes("BUSINESS_LICENSE_URL=")) pass("env example contains BUSINESS_LICENSE_URL");
+else fail("env example contains BUSINESS_LICENSE_URL", "missing");
 
 const starterPackPage = await readFile("downloads/title-factory-starter-pack.html", "utf8");
 for (const needle of ["怎么试用这份样品", "样品包之后做什么", "application/ld+json"]) {

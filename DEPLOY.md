@@ -60,6 +60,7 @@ npm start
    - `AI_API_KEY`
    - `TEMPLATE_PACK_URL`
    - `PRO_CHECKOUT_URL`
+   - `BUSINESS_LICENSE_URL`
 
 没有支付链接时，可以先留空，按钮会回到等待名单。
 

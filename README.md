@@ -70,6 +70,7 @@ http://localhost:4173/healthz
 ```bash
 TEMPLATE_PACK_URL=https://你的模板包购买链接
 PRO_CHECKOUT_URL=https://你的 Pro 购买链接
+BUSINESS_LICENSE_URL=https://你的商业授权购买链接
 ```
 
 等待名单只是早期验证用，真正上线后可以迁到邮件服务、数据库或支付平台。

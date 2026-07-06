@@ -918,7 +918,7 @@
               <li>客户项目打样</li>
               <li>授权边界说明</li>
             </ul>
-            <a href="business-license.html">查看授权</a>
+            <a id="businessLicenseCta" href="business-license.html">查看授权</a>
           </article>
           <article class="price-card">
             <h3>Pro 版</h3>
@@ -1136,6 +1136,7 @@
       const waitlistButton = document.querySelector("#waitlistButton");
       const waitlistNote = document.querySelector("#waitlistNote");
       const templatePackCta = document.querySelector("#templatePackCta");
+      const businessLicenseCta = document.querySelector("#businessLicenseCta");
       const proCta = document.querySelector("#proCta");
       let currentMode = "xhs";
 
@@ -1298,6 +1299,11 @@
             proCta.href = config.proCheckoutUrl;
             proCta.target = "_blank";
             proCta.rel = "noreferrer";
+          }
+          if (config.businessLicenseUrl) {
+            businessLicenseCta.href = config.businessLicenseUrl;
+            businessLicenseCta.target = "_blank";
+            businessLicenseCta.rel = "noreferrer";
           }
         } catch {
           // Keep waitlist fallback links.

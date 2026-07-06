@@ -419,11 +419,11 @@
       <section class="shell">
         <div class="checkout">
           <div>
-            <h2>商业授权入口接入中</h2>
-            <p>当前先开放页面和预售说明。支付平台审核通过后，这里会切换为商业授权购买入口。</p>
-            <div class="note">如果只是个人使用，先看 ¥99 完整包；如果是团队复用、客户项目打样，再考虑商业授权。</div>
+            <h2 id="checkoutTitle">商业授权入口接入中</h2>
+            <p id="checkoutCopy">当前先开放页面和预售说明。支付平台审核通过后，这里会切换为商业授权购买入口。</p>
+            <div class="note" id="checkoutNote">如果只是个人使用，先看 ¥99 完整包；如果是团队复用、客户项目打样，再考虑商业授权。</div>
           </div>
-          <a class="primary" href="paid-template-pack.html">先看完整包</a>
+          <a class="primary" id="businessBuyButton" href="paid-template-pack.html">先看完整包</a>
         </div>
       </section>
     </main>
@@ -432,6 +432,33 @@
       <div class="shell">标题工厂 · 商业授权版用于提高客单价和团队复用价值。</div>
     </footer>
 
+    <script>
+      async function applyBusinessCheckoutConfig() {
+        try {
+          const response = await fetch("/api/config");
+          if (!response.ok) return;
+          const config = await response.json();
+          if (!config.businessLicenseUrl) return;
+
+          const button = document.querySelector("#businessBuyButton");
+          const title = document.querySelector("#checkoutTitle");
+          const copy = document.querySelector("#checkoutCopy");
+          const note = document.querySelector("#checkoutNote");
+
+          button.href = config.businessLicenseUrl;
+          button.textContent = "立即购买商业授权";
+          button.target = "_blank";
+          button.rel = "noreferrer";
+          title.textContent = "购买商业授权";
+          copy.textContent = "支付完成后按平台规则自动交付商业授权压缩包，包含完整模板包、授权边界、团队 SOP 和客户项目流程。";
+          note.textContent = "商业授权适合团队复用和客户项目打样；个人使用可先选择 ¥99 完整包。";
+        } catch {
+          // Keep static fallback links.
+        }
+      }
+
+      applyBusinessCheckoutConfig();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",

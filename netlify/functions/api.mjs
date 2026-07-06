@@ -3,6 +3,7 @@ const aiApiKey = process.env.AI_API_KEY || process.env.OPENAI_API_KEY || "";
 const aiModel = process.env.AI_MODEL || "gpt-4o-mini";
 const templatePackUrl = process.env.TEMPLATE_PACK_URL || "";
 const proCheckoutUrl = process.env.PRO_CHECKOUT_URL || "";
+const businessLicenseUrl = process.env.BUSINESS_LICENSE_URL || "";
 
 const jsonHeaders = {
   "content-type": "application/json; charset=utf-8",
@@ -186,7 +187,7 @@ export async function handler(event) {
   }
 
   if (event.httpMethod === "GET" && route === "/config") {
-    return json(200, { templatePackUrl, proCheckoutUrl });
+    return json(200, { templatePackUrl, proCheckoutUrl, businessLicenseUrl });
   }
 
   if (event.httpMethod === "GET" && route === "/stats") {

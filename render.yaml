@@ -21,3 +21,5 @@ services:
         sync: false
       - key: PRO_CHECKOUT_URL
         sync: false
+      - key: BUSINESS_LICENSE_URL
+        sync: false

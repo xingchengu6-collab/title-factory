@@ -661,7 +661,7 @@
               <p>如果不是个人使用，而是团队内部复用、客户项目打样或代运营前期交付，商业授权版更适合。</p>
               <div class="note">商业授权预售层为 ¥999，一次授权，不包含代运营或一对一服务。</div>
             </div>
-            <a class="primary" href="business-license.html">查看商业授权</a>
+            <a class="primary" id="businessLicenseUpsell" href="business-license.html">查看商业授权</a>
           </div>
         </div>
       </section>
@@ -708,14 +708,30 @@
     </footer>
 
     <script>
-      const checkoutUrl = "";
       const buyButton = document.querySelector("#buyButton");
-      if (checkoutUrl) {
-        buyButton.href = checkoutUrl;
-        buyButton.textContent = "立即购买";
-        buyButton.target = "_blank";
-        buyButton.rel = "noreferrer";
+      const businessLicenseUpsell = document.querySelector("#businessLicenseUpsell");
+
+      function setExternalCheckout(link, url, text) {
+        if (!link || !url) return;
+        link.href = url;
+        link.textContent = text;
+        link.target = "_blank";
+        link.rel = "noreferrer";
       }
+
+      async function applyCheckoutConfig() {
+        try {
+          const response = await fetch("/api/config");
+          if (!response.ok) return;
+          const config = await response.json();
+          setExternalCheckout(buyButton, config.templatePackUrl, "立即购买");
+          setExternalCheckout(businessLicenseUpsell, config.businessLicenseUrl, "购买商业授权");
+        } catch {
+          // Keep static fallback links.
+        }
+      }
+
+      applyCheckoutConfig();
     </script>
     <script type="application/ld+json">
       {
