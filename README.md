@@ -120,6 +120,12 @@ SITE_URL=https://你的域名.com npm run generate
 npm run preflight
 ```
 
+交付包检查：
+
+```bash
+npm run verify:delivery
+```
+
 ## 下一步
 
 1. 按 `DEPLOY.md` 上线到支持 Node 服务的平台。
