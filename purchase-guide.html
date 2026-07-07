@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>标题工厂买哪个版本 - 自助购买决策助手</title>
+    <title>标题工厂买哪个版本 - 版本选择助手</title>
     <meta
       name="description"
       content="标题工厂购买决策助手，帮助个人创作者、团队、工作室和企业运营判断适合免费样品包、¥99 模板包、¥999 商业授权还是 Pro 版。"
     />
     <link rel="canonical" href="https://xingchengu6-collab.github.io/purchase-guide.html" />
-    <meta property="og:title" content="标题工厂买哪个版本 - 自助购买决策助手" />
+    <meta property="og:title" content="标题工厂买哪个版本 - 版本选择助手" />
     <meta
       property="og:description"
-      content="不用咨询客服，选择身份、用途和预算后，自动推荐标题工厂免费样品、付费模板包、商业授权或购买意向表单。"
+      content="选择身份、用途和预算后，自动推荐标题工厂免费样品、付费模板包、商业授权或 Pro 通知。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://xingchengu6-collab.github.io/purchase-guide.html" />
@@ -205,10 +205,10 @@
     <main>
       <section class="shell hero">
         <div>
-          <span class="kicker">自助购买决策 · 减少人工咨询</span>
-          <h1>不知道买哪个版本？先让页面自己判断。</h1>
+          <span class="kicker">版本选择助手</span>
+          <h1>不知道买哪个版本？先做一个快速判断。</h1>
           <p class="lead">
-            选择你的身份、用途和预算，页面会自动推荐免费样品、¥99 完整模板包、¥999 商业授权或购买意向表单。适合把访客从“看看”推进到“自己决定下一步”。
+            选择你的身份、用途和预算，页面会自动推荐免费样品、¥99 完整模板包、¥999 商业授权或 Pro 通知。
           </p>
           <div class="actions">
             <a class="primary" href="#decision">开始判断</a>
@@ -264,7 +264,7 @@
       <section class="shell">
         <div class="section-title">
           <h2>四个版本怎么分</h2>
-          <p>把选择标准写在页面上，访客能自己完成筛选，不需要你逐个解释。</p>
+          <p>先看使用场景，再决定从免费样品、完整模板包还是商业授权开始。</p>
         </div>
         <div class="grid">
           <article class="card">
@@ -274,7 +274,7 @@
             <ul class="list">
               <li>CSV / Markdown 样品</li>
               <li>在线查看模板库</li>
-              <li>适合冷流量试用</li>
+              <li>适合第一次试用</li>
             </ul>
           </article>
           <article class="card">
@@ -298,13 +298,13 @@
             </ul>
           </article>
           <article class="card">
-            <h3>购买意向</h3>
-            <strong class="price">表单</strong>
-            <p>支付没接好前，先把高意向访客沉淀到表格里。</p>
+            <h3>Pro 通知</h3>
+            <strong class="price">邮箱</strong>
+            <p>适合想要批量生成、保存品牌语气和更多导出能力的人。</p>
             <ul class="list">
-              <li>自动带来源参数</li>
-              <li>适合预售验证</li>
-              <li>不需要主动找客户</li>
+              <li>批量生成</li>
+              <li>品牌语气保存</li>
+              <li>功能开放时通知</li>
             </ul>
           </article>
         </div>
@@ -313,23 +313,23 @@
       <section class="band">
         <div class="shell">
           <div class="section-title">
-            <h2>更容易成交的顺序</h2>
-            <p>低摩擦试用、低价购买、高价授权，是更适合被动变现的路径。</p>
+            <h2>更清楚的选择顺序</h2>
+            <p>先试用样品，再看完整包；多人共用或客户项目使用时，再考虑商业授权。</p>
           </div>
           <div class="steps">
             <article class="card step">
               <strong>1</strong>
               <h3>先让用户试用</h3>
-              <p>免费工具、样品包和模板库负责建立信任，适合搜索流量第一次进入。</p>
+              <p>免费工具、样品包和模板库可以先判断风格是否适合。</p>
             </article>
             <article class="card step">
               <strong>2</strong>
-              <h3>再推 ¥99 包</h3>
-              <p>已经觉得有用的人，更容易为完整模板和 CSV/Markdown 交付付款。</p>
+              <h3>再看 ¥99 包</h3>
+              <p>如果样品结构适合，就可以选择完整模板和 CSV/Markdown 交付。</p>
             </article>
             <article class="card step">
               <strong>3</strong>
-              <h3>最后承接 ¥999</h3>
+              <h3>最后考虑 ¥999</h3>
               <p>团队、工作室和代运营需要的是授权边界、流程和客户项目打样权。</p>
             </article>
           </div>
@@ -412,12 +412,12 @@
 
         if (kind === "pro") {
           resultLabel.textContent = "可观察";
-          resultTitle.textContent = "Pro 或购买意向";
-          resultCopy.textContent = "你更像高频使用者。Pro 适合后续持续功能；正式订阅没开放前，先提交购买意向更稳。";
+          resultTitle.textContent = "Pro 通知";
+          resultCopy.textContent = "你更像高频使用者。Pro 适合批量生成、保存品牌语气和更多导出能力。";
           const url = intentUrl("purchase-guide-pro");
           if (checkoutConfig.proCheckoutUrl) setExternal(primaryCta, checkoutConfig.proCheckoutUrl, "查看 Pro");
-          else if (url) setExternal(primaryCta, url, "提交购买意向");
-          else setInternal(primaryCta, "index.html#pro", "留下购买意向");
+          else if (url) setExternal(primaryCta, url, "获取 Pro 通知");
+          else setInternal(primaryCta, "index.html#pro", "获取通知");
           setInternal(secondaryCta, "ai-tools-workbench.html", "先用 AI 工作台");
           return;
         }
@@ -451,7 +451,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "标题工厂买哪个版本",
-        "description": "帮助用户判断适合免费样品包、¥99 模板包、¥999 商业授权还是 Pro 版的自助购买决策页。",
+        "description": "帮助用户判断适合免费样品包、¥99 模板包、¥999 商业授权还是 Pro 通知的版本选择页。",
         "url": "https://xingchengu6-collab.github.io/purchase-guide.html"
       }
     </script>

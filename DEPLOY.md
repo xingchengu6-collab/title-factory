@@ -39,12 +39,6 @@ npm start
 /healthz
 ```
 
-运营看板：
-
-```text
-/admin.html
-```
-
 ## 4. Render 部署
 
 项目已经包含 `render.yaml`，适合直接导入 Render。
@@ -63,7 +57,7 @@ npm start
    - `BUSINESS_LICENSE_URL`
    - `PURCHASE_INTENT_URL`
 
-没有支付链接时，可以先留空，按钮会回到等待名单。
+没有支付链接时，可以先留空，按钮会回到通知名单。
 
 如果当前使用 GitHub Pages 静态站，环境变量不会自动生效。拿到支付链接后，直接填写根目录的 `checkout-config.json`，再同步到 GitHub Pages。
 
@@ -76,6 +70,6 @@ npm start
 ## 6. 上线后动作
 
 1. 提交 `sitemap.xml` 到搜索引擎。
-2. 每周查看 `/admin.html`，找出访问和生成最多的行业。
-3. 把表现好的行业扩成更多长尾页。
-4. 当等待名单有稳定提交后，再接支付或邮件系统。
+2. 每周导出事件数据，找出访问和生成最多的行业。
+3. 把表现好的行业扩成更多细分页面。
+4. 当通知名单有稳定提交后，再接支付或邮件系统。

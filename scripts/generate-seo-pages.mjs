@@ -80,10 +80,10 @@ function renderPackJsonLd(pack, description) {
           },
           {
             "@type": "Question",
-            name: "现在可以直接购买吗？",
+            name: "完整包包含什么？",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "完整模板包已经准备好，当前等待数字商品平台审核。审核通过后页面会切换为自动购买和下载。",
+              text: "完整包包含 25 个行业、1000 条标题/文案/提示词和 750 条内容日历方向，适合下载后筛选、复制和改写。",
             },
           },
           {
@@ -196,7 +196,7 @@ function renderIndustryPackPage(pack) {
     <main>
       <section class="shell hero">
         <div>
-          <span class="kicker">行业模板包 · 被动搜索入口</span>
+          <span class="kicker">行业模板包</span>
           <h1>${escapeHtml(pack.title)}</h1>
           <p class="lead">${escapeHtml(description)}</p>
           <div class="actions">
@@ -205,8 +205,8 @@ function renderIndustryPackPage(pack) {
           </div>
         </div>
         <aside class="panel">
-          <strong>¥99 完整包承接</strong>
-          <p>这个行业页负责承接精准搜索，完整模板包负责一次性被动交付。审核通过后会切换为自动购买。</p>
+          <strong>¥99 完整模板包</strong>
+          <p>先用当前行业的免费工具和样品包确认风格，再进入完整模板包，下载后可长期筛选和改写。</p>
           <div class="chips">${tags}<span class="chip">1000+ 模板</span><span class="chip">750 条日历</span></div>
         </aside>
       </section>
@@ -250,7 +250,7 @@ function renderIndustryPackPage(pack) {
         <div class="bar">
           <div>
             <strong>先试免费样品，再决定是否需要完整模板包。</strong>
-            <p>这条路径不需要咨询、不需要人工交付，后续支付平台审核通过后即可自动购买下载。</p>
+            <p>先看真实样品，确认适合自己的行业和内容场景，再决定是否获取完整模板包。</p>
           </div>
           <div class="actions">
             <a class="primary" href="../downloads/title-factory-starter-pack.html">下载样品</a>
@@ -302,7 +302,7 @@ function renderSolutionJsonLd(solution, description) {
             name: "这是免费工具还是付费模板？",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "页面提供免费工具和样品包入口，完整模板包按数字产品交付设计，审核通过后会接入自动购买下载。",
+              text: "页面提供免费工具和样品包入口，完整模板包包含标题、文案、销售页和提示词结构，适合下载后长期复用。",
             },
           },
           {
@@ -412,7 +412,7 @@ function renderSolutionPage(solution) {
     <main>
       <section class="shell hero">
         <div>
-          <span class="kicker">解决方案 · 高购买意图入口</span>
+          <span class="kicker">模板解决方案</span>
           <h1>${escapeHtml(solution.title)}</h1>
           <p class="lead">${escapeHtml(description)}</p>
           <div class="actions">
@@ -421,7 +421,7 @@ function renderSolutionPage(solution) {
           </div>
         </div>
         <aside class="panel">
-          <strong>搜索意图更接近付费</strong>
+          <strong>适合直接找模板的人</strong>
           <p>${escapeHtml(solution.intent)}</p>
         </aside>
       </section>
@@ -453,7 +453,7 @@ function renderSolutionPage(solution) {
           </article>
           <article class="card">
             <h2>再看样品</h2>
-            <p>样品包负责让用户看到真实结构，降低直接购买完整包的犹豫。</p>
+            <p>样品包可以看到真实结构，帮助你判断这套模板是否适合自己的行业和表达方式。</p>
           </article>
           <article class="card">
             <h2>最后进入完整包</h2>
@@ -464,8 +464,8 @@ function renderSolutionPage(solution) {
       <section class="shell">
         <div class="bar">
           <div>
-            <strong>这类页面负责承接“我想买模板”的搜索。</strong>
-            <p>比普通工具页更靠近付费意图，但仍保留免费工具和样品包入口，避免用户马上离开。</p>
+            <strong>如果你已经明确想找模板，可以直接从样品包开始。</strong>
+            <p>先看真实结构，再决定是否需要完整模板包，会比盲目购买更稳。</p>
           </div>
           <div class="actions">
             <a class="primary" href="../downloads/title-factory-starter-pack.html">下载样品</a>
@@ -627,7 +627,7 @@ function renderSeoPage(page) {
     <main>
       <section class="shell hero">
         <div>
-          <span class="kicker">行业长尾页 · 免费工具入口</span>
+          <span class="kicker">免费工具</span>
           <h1>${escapeHtml(page.title)}</h1>
           <p class="lead">${escapeHtml(description)}</p>
           <div class="actions">
@@ -675,8 +675,8 @@ function renderSeoPage(page) {
       <div class="shell">
         <div class="bar">
           <div>
-            <strong>把这个页面当成搜索入口，把首页工具当成转化入口。</strong>
-            <p style="margin: 8px 0 0; color: var(--muted); line-height: 1.7;">这是程序化 SEO 的基本结构：每个行业页解决一个具体搜索词，再把用户带到同一个工具。</p>
+            <strong>打开生成器，继续生成更多可改写版本。</strong>
+            <p style="margin: 8px 0 0; color: var(--muted); line-height: 1.7;">你可以先用当前行业的预设内容生成第一批标题，再根据自己的产品和语气继续微调。</p>
           </div>
           <a class="cta" href="${escapeHtml(toolHref(page))}">开始生成</a>
         </div>
@@ -833,7 +833,7 @@ function renderCommercialLicensePage(page) {
     <main>
       <section class="shell hero">
         <div>
-          <span class="kicker">商业授权入口 · 高客单价搜索</span>
+          <span class="kicker">团队商业授权</span>
           <h1>${escapeHtml(page.title)}</h1>
           <p class="lead">${escapeHtml(description)}</p>
           <div class="actions">
@@ -843,7 +843,7 @@ function renderCommercialLicensePage(page) {
           </div>
         </div>
         <aside class="panel">
-          <span class="kicker">推荐层级</span>
+          <span class="kicker">授权价格</span>
           <strong>¥999</strong>
           <p>适合团队内部复用、客户项目打样和内容 SOP 沉淀。不包含代运营、代写、一对一咨询或效果保证。</p>
         </aside>
@@ -864,7 +864,7 @@ function renderCommercialLicensePage(page) {
       </section>
       <section class="shell">
         <article class="card">
-          <h2>可承接的搜索意图</h2>
+          <h2>适合的使用场景</h2>
           <p>${escapeHtml(page.intent)}</p>
         </article>
       </section>

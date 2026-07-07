@@ -272,6 +272,6 @@ export const industryPacks = [
     outcome: "把内容价值包装成更容易理解、更容易购买的页面结构。",
     primaryHref: "paid-template-pack.html",
     examples: ["这套模板适合谁，不适合谁", "买完之后 30 分钟内怎么开始用", "把课程价值写成结果，而不是章节目录"],
-    tags: ["知识产品", "变现"],
+    tags: ["知识产品", "销售页"],
   },
 ];
